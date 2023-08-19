@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeInterval</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+console.log("script start");
+let body = document.body;
+let id = setInterval(()=>{
+    let r = Math.floor(Math.random()*256);
+    let g = Math.floor(Math.random()*256);
+    let b = Math.floor(Math.random()*256);
+    body.style.background = `rgb(${r},${g},${b})`
+    console.log(r,g,b)
+},1000);
+for(let i =0;i<1000;i++){
+    console.log("inside loop")
+}
+console.log("script end");
+const btn = document.createElement("button");
+btn.textContent = "stop";
+document.body.appendChild(btn);
+btn.addEventListener("click", ()=>{
+    clearInterval(id)
+})
+
+
+
+// const body = document.body;
+// const btn = document.createElement("button");
+// btn.innerText = "Stop";
+// document.body.append(btn);
+// let id = setInterval(()=>{
+//       const r = Math.floor(Math.random()*256);
+//       const g = Math.floor(Math.random()*256);
+//       const b = Math.floor(Math.random()*256);
+//       body.style.background = `rgb(${r},${g},${b})`
+// },800);
+// btn.addEventListener("click",()=>{
+//     clearInterval(id)
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

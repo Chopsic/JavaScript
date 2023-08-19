@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Conditional Statements</h2>
+    <p>Alert</p>
+    <p>Prompt</p>
+    <p>Confirm</p>
+    <p>Intro to Conditional Statements</p>
+    <p>Comparison Operators</p>
+    <p>Strict Equality</p>
+    <p>If Else Statement</p>
+    <p>Truthy and Falsy Values</p>
+    <p>Nested If Else Statement</p>
+    <p>Else if Statement</p>
+    <p>Logical Operators</p>
+    <p>Precedence of logical Operators</p>
+    <p>Using or for assigning value</p>
+    <p>Short Circuit Evaluation</p>
+    <p>Using and for assigning value</p>
+    <p>Ternary Operator</p>
+    <p>Sequence of Ternary Operator</p>
+    <p>Switch Statement</p>
+    <p>Nullish Coalescing Operator</p>
+</body>
+<script>
+    // use strict is use for errors
+'use strict';
+/********************  Talk Aabout ********************
+* Alert
+* Prompt
+* Confirm
+* Intro to Conditional Statements
+* Conditional Statements
+* Comparison Operators
+* Strict Equality
+* If Else Statement
+* Truthy["_",1] and Falsy Values[null,Nan,Undefined,"",0]
+* Nested If Else Statement
+* Else if Statement
+* Logical Operators[and(&&),or(||),not(!),Double not(!!)]
+* Precedence of logical Operators
+* Using or for assigning value
+* Short Circuit Evaluation
+* Using and for assigning value
+* Ternary Operator
+* Sequence of Ternary Operator 
+* Switch Statement 
+* Nullish Coalescing Operator -> ??
+
+***************************************************/
+
+// Alert -------------------->
+// alert is use for alert box
+
+
+// Program for adding two Numbers --------------------------------------->
+// let a = +(prompt("Enter first number"));
+// let b = +(prompt("Enter second number"));
+// console.log(a+b);
+
+
+// Program for checking number is odd or even -------------------------------->
+// let num = parseFloat(prompt("Check number is odd or even"));
+// if(num%2===0){
+//     alert(`${num} is even`);
+// }else{
+//     alert(`${num} is odd`)
+// }
+
+
+// Program for Guessing number -------------------------------------->
+// let win = 20;
+// let num = parseFloat(prompt("Guess Number"));
+// if(num===20){
+//     alert("You won");
+// }else{
+//     if(num>20){
+//         alert("Number is too Bigger");
+//     }else{
+//         alert("Number is too Smaller");
+//     }
+// }
+
+
+// Program for checking number is +ve,-ve, or zero ------------------------------------------>
+// let num = parseFloat(prompt("Enter Number"));
+// if(num===0){
+//     alert("Number is Zero");
+// }else if(num>0){
+//     alert("Number is Positive");
+// }else if(num<0){
+//     alert("Number is Negative");
+// }else{
+//     alert("Invalid Number");
+// }
+
+
+// Logical Operators ----------------------------------->
+// AND(&&)[Dono value true honi chaiya]
+// console.log(true && true);  // dono value true honi chaiya
+// console.log(false && true); // agar ak be value falue hue to false
+// console.log(true && false);
+
+//OR(||)[Koi be ak value true honi chaiya]
+// console.log(false || true); //koi be ak value true honi chaiya
+// console.log(true || false);
+// console.log(true || true); 
+
+// NOT(!)[True ka false kar deta h or false ka true kar deta h]
+// console.log(!false);  //false ko true kar dega
+// console.log(!true);   //true ko false kar dega
+
+//Double NOT (!!)[ye truthy or falsy value ko batata hai]
+// console.log(!!undefined);
+console.warn(!!(" "));
+
+
+// Program for checking Text starts with A or a -------------------------->
+// let text = prompt("Enter Your Name");
+// if(text[0]==="a" || text[0]==="A"){
+//     alert("Your name is started with A")
+// }else{
+//     alert("Your name is not started with A")
+// }
+
+// precedence of logical operators -------------------------------->
+// not ! 
+// and &&
+// or ||
+
+console.log(true || false && !true );
+console.log(true || false && false );
+console.log(true || false );
+console.log(true);
+
+
+// Using or for assigning value ------------------------------->
+// jo bhe first truthy value hogi vo username ma store ho jayegi
+// lakin agar kisi be variable ma truthy value nhi mili to {or ||} operator last variable ke value ko assign kar dega 
+// ya fir aap apna aap sa last ma ||or operator use karka ""string ma kuch likh do vo usernam ma chali jayegi
+let name1 = ""; 
+let name2;
+let name3 = NaN; 
+let name4 = null;
+let name5 = "Amit";
+let username = name1 || name2 || name3 || name4 || name5;  
+console.log(username);  // isma name5 ke value print hogi kyuki isma name5 he pheli truthy value hai
+
+
+let age = 18; // short circuit evaluation
+age > 18 || console.log("Young");  // isma young print hoga kyuki isma age 18 ka equal ha na ke greater to wo false ho gya or young print ho gya
+age==18|| console.log("young"); // isma kuch be print nhi hoga kyuki isma condition true ho gai
+
+
+// Using or for assigning value ------------------------------->
+// jo bhe first falsy value hogi va assign hogi
+// lakin agar kisi be variable ma falsy value nhi mili to {&& and} operator last variable ke value ko assign kar dega 
+// ya fir aap apna aap sa last ma &&and operator use karka ""string ma kuch likh do vo usernam ma chali jayegi
+let nam1 = "Saini"; 
+let nam2 = "Amit";
+let nam3 = NaN; 
+let nam4 = null;
+let nam5;
+let usernam = nam1 && nam2 && nam3 && nam4 && nam5;  
+console.log(usernam); //isma nam3 ke value print hogi kyuki nam3 he pheli falsy value h
+var b=5;
+let ag = 18; // short circuit evaluation
+ag > 18 && console.log("Young");  // isma kuch nhi print hoga kyuki condition falsy hai
+console.log(ag==18 && b);  // isma "young" print hoga kuki condition truthy hai 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//.........................*************************--------------------------->
+
+// let num = prompt("Enter a Number");
+// if (num % 2 === 0) {
+//     alert("Number is Even")
+// }
+// else {
+//     alert("Number is odd")
+// }
+
+// let name = "A";
+// if(!(name[0]==="A" || name[0]==="A")){
+//     console.log("if");
+// }else{
+//     console.log("else");
+// }
+
+// console.log(!!NaN);
+</script>
+</html>

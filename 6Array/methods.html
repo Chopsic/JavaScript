@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods</title>
+</head>
+<body>
+<ul>
+    <li>Find Method</li>
+    <li>Every Method</li>
+    <li>Some Method</li>
+    <li>Fill Method</li>
+    <li>Splice Method</li>
+</ul>
+<script>
+//Find Method ***************************************************>
+//kisi array ma sa kuch findout karna ho
+//find method peheli true value return kerta hai
+//real life ma jesa userID sa user ko finout karna ho to find method use kerta hai
+//jesa humna nicha ak arr lia hai uska sath humna find method use kia hai uska ander ak callback function hai jo ke arrgument lega[3 parameter pass kar sekta hai, 1=element, 2=index,3=array];
+//array ke element bari bari sa (s) ma jayenga or nicha jakar check hoga ke s.lenght===3 hai ya nhi jha true aa gya wha us element ko return kar denga (re) ma
+//isna sirf sam ko return kia hai uska baad sun ko nhi kia kyuki ya sirf first true value return kerta hai
+let arr= ["amit", "saini", "sam", "sum", "palak"];
+let re = arr.find((s)=>{
+    return s.length==3;
+})
+// console.log(re)
+
+
+let array = [
+    {userId:1, userName: "Amit"},
+    {userId:2, userName: "Palak"},
+    {userId:3, userName: "Sumit"},
+    {userId:4, userName: "Jatin"},
+    {userId:5, userName: "Neha"}
+];
+//jesa yha ak array ka ander kai object hai huma ak user find kerna hai jiski id 3 hai
+//to humna array ka uper find method use kar lia find ka ander callback fun bana lia ko array ka elements lega[array ka elements obj hai] 
+//jha calback function true ho jayega wha wo return kar dega ye sirf first true value he return kar ta hai
+let f = array.find((user)=>{
+    return user.userId===2;   
+})
+// console.log(f)
+
+
+
+
+
+//*****************************************************
+//Every Method -------------------------------------------------==>
+//every method true false return kerta hai jab callback fun har ak element par true dega to Every method [TRUE] return karega werna False kisi be ak element ka false par
+//nicha ak array banaya hai isma check karna hai ke har ak element even hai ya nhi
+let even=[2,4,6,8,10];
+let r = even.every((e)=>{
+    return e%2===0;
+})
+// console.log(r)
+
+// Real life Example  ===>
+//huma check karna hai ke all price 200 sa upper hai ya nhi
+//ya true jab dega jab price 200 sa uper hai ya 200 ka equal hai agar ak be price 200 sa kam hua to false dega
+let products = [      
+    {id : 1, name : "p1", price : 300},
+    {id : 2, name : "p1", price : 3000},
+    {id : 3, name : "p1", price : 200},
+    {id : 4, name : "p1", price : 800},
+    {id : 1, name : "p1", price : 300},
+]
+let ck = products.every(({price})=>{
+    return price>=200;  
+})
+// console.log(ck);
+
+
+
+
+
+
+// *****************************************************
+//Some Method ---------------------------------------=>
+//some method ma agar ak element par condition satisfied hoti hai to true return kerta hai;
+
+let a = [1,3,5,7,9]; //agar hum is array ma ak even no. dal deta hai to nich uss even no. ki condition satisfies ho jayegi or some True return karega
+let pr=a.some((el)=>{
+    return (el%2==0);    //yha kisi be Element par condition satisfied nhi ho rhi
+})
+// console.log(pr)
+
+
+
+
+
+// *******************************************************
+//Fill method ---------------------------------------->
+//fill method sa hum kisi be array elements ko ak he element sa replace kar sekta hai
+//ya fir hum kisi array ke kuch elements kuch be replace kar sekta hai
+let s = [1,2,3,4,5,6,7,8];
+s.fill("-1");
+// console.log(s)
+
+//fill method ko hum sa be use kar sekta hai
+let n = new Array(10).fill(-1)  //humna ak [new Array]keyword sa ak array banya jiski length 10 hai uska sath fill method use kia fill method ma 1 pass kar dia     
+// console.log(n)
+
+let fi = [1,2,3,4,5,6,7,8];
+fi.fill(0,2,5); //isma phela no. to wo hai jissa replace karna hai, or fir index no. dalna hai kha sa kha tak replcekarna hai 
+// console.log(fi);  //isma 2nd, 3rd, 4th index no. par 0 aa jayega 5th index par nhi hoga kyuki dusra wala no. exclusive hota hai wo include nhi hota
+
+
+
+
+
+//*****************************************************
+// Splice Method --------------------------------------->
+//splice(start index, delete element, insert element);
+let sp = [1,2,3,4,5,6,7,8];
+let d = sp.splice(2,0,"s")    //==> 2nd index par, 0 element ka matlab hai ak be nhi delete karna hai, "s" dalna hai
+// console.log(sp);     //== 2nd index par "s" insert ho gya or uska baad ka jitna elements delete karna ka lia dala hai wo delete ho gaye agar 0 dala hai to ak be delete nhi hoga
+// console.log(d) //==>empty array print karega kyuki splice na kuch be delete nhi kia 
+
+let spp = [1,2,3,4,5,6,7,8,9];
+let de = spp.splice(5,2,"last")  //==>5th index par last insert ho jayega or uska baad ka 4 elements delete ho jayenga unko de ma return kar dega splice
+// console.log(spp);
+console.log(de)  //==?ya 2 element ka array print karega kyuki splice na array ma sa 2 elements delete kara hai
+
+let os = [1,2,3,4,5,6,7,8];
+let del = os.splice(3);   //agar sirf ak no. pass karta ho to iska matlab hai ke starting ka uttana elements aa jayenga
+// console.warn(os);   //=> splice ka ander 3 dala hai to first 3 elements aa jayenga
+console.log(del)  //ya starting ka 3 elements ko chod kar baki elements ka array print karega 
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>

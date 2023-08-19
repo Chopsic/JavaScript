@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sting in JS</h1>
+</body>
+<script>
+    // use strict is use for errors
+'use strict';
+
+/***************** Talk About ********************
+1.) Strings 
+2.) find length of string
+3.) string concatenation 
+4.) template strings
+5.) escape characters
+6.) string indexing
+7.) string slicing(slice)
+8.) useful string methods :--
+       substr
+       substring
+       toLowerCase
+       toUpperCase
+***************************************************/ 
+
+//  1.) String
+
+let x = `My name is
+         Amit Saini`;    //by using backticks whateve you write exactly print in console
+console.log(x);
+
+let y = 'Amit'; // by using single quotes you can write strings
+console.log(y);
+
+let z = "Amit Saini";  // and in double quotes you can also write strings
+console.log(z);
+
+
+// 2.) find length of string
+let l = "My name is Amit Saini";
+let str = l.length;  // by using variable name .(dot) length
+console.log(str);
+
+
+// 3.) String concatenation (is means combine or adding strings by using +(plus) sign in double and single quotes)
+let a = "Amit";
+let b = "20";
+let c = "my name is " + a + " and I am " + b + " years old" ;
+console.log(c);
+
+
+// 4.) Template String (is means combine or adding strings by using ${} only in ``(backticks))
+let u = "Amit";
+let v = "20";
+let w = `my name is ${u} and I am ${v} years old`;  //template string you can use ${} only in backticks
+console.log(w);
+
+
+// 5.) Escape Characters
+
+let ab = ' I\'m \nAmit Saini'; //  (\' and \n) are escape character they are using to write the some character in console
+console.log(ab);
+
+
+// 6.) String Indexing (it means print a character where it is by using index value)
+let an = "Here we print any alphabets of this line using string indexing";
+let any=an[10];  // string indexing is start with 0(zero).
+console.log(any);
+
+let no  = "here we print last alphabet of this line using string indexing";
+let last = no[no.length-1];
+console.log(last);
+
+
+// 7.) String Slice  (string slice is means a part of a string)
+let first = "amitsaini";
+let fst = first.slice(0) //if you use only zero then full string prints
+console.log(fst);
+
+let second = "amitkumarsaini";
+let sec = second.slice(0,5); // here (0,5) means first to fourth not fifth 
+console.log(sec);            // it also start with 0
+
+let third = "AmitSaini";
+let thrd = third.slice(1,8); // here (1,8) means second to seventh
+console.log(thrd);
+
+
+// 8.) substr (it is similar to slice)
+let fist = "amitkumarsaini";       
+let substr = fist.substr(0,5);     // here (0,5) means first to fourth not fifth
+console.log(substr);                // it also start with zero
+
+let scnd = "AmitSaini";
+let subst = scnd.slice(1,8);     // here (1,8) means second to seventh not eigth
+console.log(thrd);
+
+// 9.) Substring (it is also similar to slice or substr)
+let anum = "amitkumarsaini";
+let substring = anum.substring(0,5);    // here (0,5) means first and fifth
+console.log(substring);                 // it also start with zero
+
+let anumb = "AmitSaini";
+let substing = anumb.slice(1,8);     // here (1,8) means second to seventh not eigth 
+console.log(substing);               // it also start with zero
+
+
+// 10.) ToLowerCase
+let low = "MY NAME IS AMIT SAINI THIS IS CHANGE UPPERCASE TO LOWERCASE";
+let lower = low.toLowerCase();
+console.log(lower);
+
+
+// 10.) ToUpperCase
+let up = "my name is amit saini this is change lowercase to uppercase";
+let upper = up.toUpperCase();
+console.log(upper);
+
+</script>
+</html>

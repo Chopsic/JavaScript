@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+}
+
+.header{
+    min-height: 60vh;
+    width: 100%;
+    background: url(../img/img.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white; 
+    position: relative;   
+}
+
+.header a{
+    color: white;
+    text-decoration: none;
+}
+
+.navbar{
+    min-height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-items{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.btn{
+    display: inline-block;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.main p{
+    font-size: larger;
+}
+
+.main .main-btn{
+    padding: 0.8rem 1.6rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    border-radius: 50px;
+}
+
+.red{
+    color: red;
+}
+
+.todo{
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.form-todo{
+    margin-top: 1rem;
+    min-height: 5vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-todo input{
+    min-height: 100%;
+}
+
+.form-todo input[type="text"]{
+    width: 78%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.form-todo input[type="submit"]{
+    width: 20%;
+    background-color: rgb(44,55,63);
+    color: #fff;
+    font-weight: bold;
+}
+
+.todo-list{
+    text-align: left;
+    font-size: 1.2rem;
+    list-style-type: none;
+}
+.todo-list li{
+    background-color: rgb(44, 55, 63);
+    color: cyan;  
+    text-transform: uppercase;
+    padding: 0.7rem;  
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btns{
+    padding: 0.5rem 0.7rem;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.signup{
+    margin: 5rem auto;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: rgb(240, 240, 240);
+}
+
+.signup-form{
+    max-width: 800px;
+    width: 95%;
+    margin: auto;
+    text-align: left;
+}
+
+.signup-form label{
+    display: block;
+}
+
+.signup-form input{
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.form-group{
+    margin-top: 1rem;
+}
+
+.signup-form textarea{
+    width: 100%;
+}
+
+.signup-btn{
+    background: rgb(44, 55, 63);
+    padding: 1rem 2rem;
+    display: block;
+    margin: 1rem auto 0px;
+    color: white;
+    border-radius: 50px;
+    font-size: larger;
+}
+
+.line{
+    text-decoration: line-through;
+}

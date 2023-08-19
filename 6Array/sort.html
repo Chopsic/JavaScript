@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Method</title>
+</head>
+<body>
+</body>
+<script>
+      //ASCII CODE
+//   "0" to "9" ---> 48 to 57
+//   "A" to "Z" ---> 65 to 90
+//   "a" to "z" ---> 97 to 122 
+
+// sort method --------------------------------------------------->
+//before learning the sort method you must know about basic ASCII Code
+//sort method original array ko he mutate(change) karta hai 
+//iska ander ak callback function be pass kar sekta hai wo optional hota hai
+//sort method array ka elements[number ya string] ka sirf first letter dekhta hai [jesa (110)ka 1, ("Amit")ka A]
+
+let f1 = ["Banana", "Orange", "Apple", "Mango"];
+f1.sort();      //isna string ko shi sa short kia hai lakin agar isma lowercase wali string hoti to unko ye last ma dalta
+// console.log(f1);    //==> ["Apple","Banana","Mango","Orange"]   
+
+let a1 = [100,4,90,70,11,120];     // expect --> [4,11,70,90,100,120]
+a1.sort();                  
+// console.log(a1);    //output --> [100,11,120,4,70,90]
+//isma jo huma chaiya tha wo nhi mila basically sort method na yha number ko as a string change karka output dia hai
+//ASCII codes ma sabsa phela ["0" to "9"] no. hai isna us hisab sa sort kia hai
+
+let a2 = [40, 100, 1, 5, 25, 10];
+a2.sort((a,b)=>{   //humna sort ke ander arrow(callback) function banaya hai ye 2 parameter lega
+    return a-b;    //agar array accending order ma sort karna hai to function sa return(a-b) karna hai, decending ka lia (b-a);
+})
+// console.log(a2)     //--> [1,5,10,25,40,100]
+
+let a3 = [40, 100, 1, 5, 25, 10];
+a3.sort((a,b)=>b-a);    //decending order ka lia b-a [return islia nhi lagaya hai kyuki function ma sirf ak line ka code hai islia return or curly braces nhi lagaye]
+// console.log(a3)     //---> [100, 40, 25, 10, 5, 1]
+
+
+//real life example of sort method ----------------->
+let products = [        //ak array hai jisma kuch object hai
+    {id : 1, name : "p1", price : 300},
+    {id : 2, name : "p1", price : 3000},
+    {id : 3, name : "p1", price : 200},
+    {id : 4, name : "p1", price : 800},
+    {id : 1, name : "p1", price : 500},
+]
+//huma original array ko change nhi karna islia humna ak cart name ka variable banaya hai or [products.slice(0)] sa huma array ko clone kar lia hai 
+let cart =  products.slice(0).sort((a,b)=>{     //array clone ka baad fuunction ma 2 parameter pass kia hai (a) ka ander array ka 1 object ayega or b ma second    
+    return a.price-b.price;     //huma sirf object ka price ko lena hai isla humnaa [a.price-b.price] return kia hai 
+});
+console.log(cart);      //--> cart ma price ka hisab sa sort array store ho gaya hai 
+console.log(products);  //---> isma kuch change nhi hua hai kyuki humna phela he array ko clone kar lia tha
+
+
+//how sort method works -------------------------------->
+//jab hum kisi array ko sort karta hai jisma numbers ho to sort method ma ak callback function pass karta hai
+// wo function 2 parameter leta hai or return ma (a-b) for accending or (b-a)for decending order
+//agar a-b ka sum (+ve) hua to iska matlab (a>b)a bada hai b sa to phela b jayega array mai
+//asa he sort method ka function last tak array ka elements ko check karta hai
+//last ma huma accending order ya decending order mai usi original array change karka da deta hai
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling or Propagation | Event Capturing | Event Delegation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: larger;
+            font-weight: 500;
+            font-family: sans-serif;
+        }
+
+        .box {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .child {
+            width: 150px;
+            height: 150px;
+            background-color: aquamarine;
+            line-height: 100px;
+        }
+
+        .parent {
+            padding: 50px;
+            background-color: pink;
+        }
+
+        .grandparent {
+            padding: 50px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>    
+    <div class="grandparent box">GrandParent
+        <div class="parent box">Parent
+            <div class="child box">Child</div>
+        </div>
+    </div>
+    <script>
+//Event Bubbling(Propagation) ===>iska matlab hai ke jab hum kisi be child ka event listen karta hai to uska parent ya fir body tak ka event listen ho jata hai;
+//Event Capturing ===> jab huma koi event capture karna hota hai to hum eventListner ma ak or argument pass kar deta hai True by default ye false rheta hai jab True kar 
+//deta hai to event capture hota hai isma body sa event call hona sru hota hai or jis par event listen kia hai wha tak event listen hota hai
+//Event Delegation ===> Event delegation ma hum ak event ko he alag alag objects ke lia call karta hai;
+//Jesa body ka event ko huma kisi button ka lia use karna hai to huma event object ka through use kar sekta hai (e.target); 
+
+        const child = document.querySelector(".child");
+        const parent = document.querySelector(".parent");
+        const grandparent = document.querySelector(".grandparent");
+        const body = document.body;
+
+        // child.addEventListener("click",(e)=>{
+        //     console.log("child");
+        // },true);
+        // parent.addEventListener("click",(e)=>{
+        //     console.log("parent");
+        // },true);
+        // grandparent.addEventListener("click",(e)=>{
+        //     console.log("grandparent");
+        // },true);
+        // body.addEventListener("click",(e)=>{
+        //     console.log("body")
+        // },true);
+        // child.addEventListener("click",(e)=>{
+        //     console.log("child");
+        // });
+        // parent.addEventListener("click",(e)=>{
+        //     console.log("parent");
+        // });
+        // grandparent.addEventListener("click",(e)=>{
+        //     console.log("grandparent");
+        // });
+        body.addEventListener("click",(e)=>{
+            console.log(e.target)
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

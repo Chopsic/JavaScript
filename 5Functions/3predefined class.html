@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>Date() ==> Predefined class in Java Script</pre>
+</body>
+<script>
+
+    //Date is predefined class in JS for get date and time
+    //get is use for get current date
+    let d1 = new Date();    //creating a new object before using Date class functions
+    document.write(d1,"<br> <br>");     //current date and time
+    document.write(d1.getDate(),"<br> <br>");       //current date
+    document.write(d1.getDay(),"<br> <br>");        //current day [(mon=1)(tue=2)(wed=3)(thr=4)(fri=5)(sat=6)(sun=7)]
+    document.write(d1.getFullYear(),"<br> <br>");   //current year
+    document.write(d1.getHours(),"<br> <br>");      //current hour
+    document.write(d1.getMilliseconds(),"<br> <br>");    
+    document.write(d1.getMinutes(),"<br> <br>");    
+    document.write(d1.getMonth(),"<br> <br>");      
+    document.write(d1.getSeconds(),"<br> <br>");
+    document.write(d1.getTime(),"<br> <br>");        //the total number of millisectons sine 1jan 1970 00.00.00    
+
+    //set is use for changing date and time [like date of birth,etc]
+    let s1 = new Date()     //creating a new object before using Date class functions
+    s1.setFullYear("2002")
+    s1.setMonth("06")
+    s1.setDate("04")
+    s1.getHours("12")
+    s1.getMinutes("05")
+    s1.getSeconds("16")
+    document.write(s1);     //print all s1 
+
+</script>
+</html>

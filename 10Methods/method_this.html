@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this_method</title>
+</head>
+<body style="font-size: larger; background-color: gray; color: yellow;">
+<pre>
+Methods ==> the functions which are inside the objects are known as method
+this keyword ===> object ko refer karta hai method ka ander
+humara javascript ma jo be code ya variable, function declare hota hai wo window object ma hota hai
+</pre>
+<script>
+// methods ===> function insides objects 
+let obj = {
+    nam : "Amit",
+    age : 21,
+    fun : (()=>console.log("hello"))     //==>yha fun ak method hai kyuki ya ak object ka ander hai
+}
+// obj.fun()
+
+
+
+
+//=============================>throw error
+let obj1 = {
+    nam : "Amit",
+    age : 21,
+    fun : (()=>`${nam} is ${age} years old`)     //==>ya function object ka ander ke values[nam or age] ko directly use nhi kar sekta apna ander
+}
+//kyuki hum nam or age ko [obj.nam] ya (obj["age"]) asa use kar sekta hai or function ma humna sidha he nam or age likha hai or
+// na he wo variables function ka bhar or na he ander declare hai islia  uski jugha [this.nam] or [this.age] use hoga or jo ["this"] hai wo object ko refer karega 
+// console.log(obj1.fun())     //===> ya error dega nam and age are not defined
+
+
+
+
+//============================> use "this" keyword inside method for refer the objects inside the method
+//arrow function ka this nhi hota
+let arr = {
+    nam : "arrow",
+    fun : ()=>{    //yha hum arrow function use kar rhae hai isma this humesha window object rheta hai
+        console.log(this.nam)
+    }
+}
+// arr.fun()   //ya undefined dega kyuki humna uper arrow function use kia hai or arrow function ka this nhi hota
+
+
+
+
+let obj2 = {
+    nam : "Amit",
+    age : 21,
+    fun : function(){
+        return (`${this.nam} is ${this.age} years old`)     //this ka matlab hai ke isma object ka refrence[address] aa gya jissa ke object ke property method ka ander access ho gyi
+    }     //this ka matlab [obj2.nam] or [obj2.age] humna obj2 ke jugha bas this likh dia ha
+}
+// console.log(obj2.fun())
+
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// window.gender = "male";  //==>issa window ma gender key kar sekta hai
+function myfun(){       //====>yha ak function banaya hai iska ander this.gender likha hai
+    console.log(this.gender)
+}
+let obb = {
+    gender : "male",
+    fun : myfun   //yha ak key value pair hai jiski value upper wala function hai
+}
+// ya undefined dega kyuki iska ander this.gender likha ab is function ma jo "this" hai wo window object ko refer karega kyuki wo function window object ma likha hai or ussa window object call kar rha rhai
+// myfun()     //issa hum assa [window.myfun()] be call kar sekta hai;
+// window.myfun()   //agar hum bhar ak gender key ko window object ma add karta hai to gender ma wo value chali jayegi or undefined nhi ayega, kyuki jo this hai wo window object ko refer kar rha hai yha par or window ma koi bhe  gender key nhi hai islia undefined da rha hai 
+
+// obb.fun()   //ya male print karega kyuki ab jo function call ho rha hai usa ya obb object call kar rha hai, ab is function ma jo this keyword hai wo obb object ko refer karega or obb ka ander ko gender key be hai islia uski value print kar dega undefined ke bajaye
+//[obj.fun]>>>>> obb sa hum is fun name ka function ka tabi call kar sekta hai jab us function ke value humna object ma ho ya fir function object ka ander he bana hua ho, isma myfun name ka function upper bana hua hai or object ka ander fun name ke key ma uss function ke value daal rakhi hai
+
+let obb1 = {
+    gender : "female",
+    fun : myfun
+}
+let obb2 = {
+    gender : "others",
+    fun : myfun
+}
+// obb1.fun()      //ab jo function ma this hai wo ya obb1 object hai
+// obb2.fun()      //or is function ma jo this ha wo ya obb2 object hai    
+//function ak he lakin this ke value change ho rhai hai jo object function ko call kar rha hai this ke value be wohi hoti ja rhai hai
+
+
+
+
+// ((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))
+
+// "this" keyword  ====>
+// javascript ma ak global object hota hai jika name hai "window"
+// agar aap bhar he console ma "this" keyword likhta ho to aapko window object milega 
+// ya fir aap console ma sidtha window be lik sekta ho dono ka matlab ak ahe hai 
+// yha par jo this hai wo window object ko he refer karega
+
+// console.log(this)        //===>here "this" keyword refers window object
+// console.log(window)      //issa be window object print hoga
+// console.log(this===window)        //yha ckeck be kar sekta hai ke window === this hai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

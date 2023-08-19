@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body style="background: grey;">
+    <h1 class="heading1">Hello World</h1>
+    <h1 class="heading2">Hello World</h1>
+    <h1 class="heading3">Hello World</h1>
+    <h1 class="heading4">Hello World</h1>
+    <h1 class="heading5">Hello World</h1>
+    <h1 class="heading6">Hello World</h1>
+    <h1 class="heading7">Hello World</h1>
+<script>
+// Simple Promise ====>
+
+// let condition = true;
+// let promise = new Promise((resolve,reject)=>{
+//         console.log("fetching data")
+//         setTimeout(()=>{
+//             if(condition){
+//             resolve("fullfilled");
+//             }else{
+//                 reject("error");
+//             }
+//         },2000)
+//     });
+
+// promise.then((pass)=>{
+//     console.log(pass);
+// }).catch((fail)=>{
+//     console.log(fail);
+// })
+
+
+
+// Function return Promise ======>
+
+// function promise(condition){
+//     return new Promise((resolve,reject)=>{
+//         console.log("fetching data")
+//         setTimeout(()=>{
+//             if(condition){
+//             resolve("fullfilled");
+//             }else{
+//                 reject("error");
+//             }
+//         },2000)
+
+//     });
+// }
+
+// promise(1).then((pass)=>{
+//     console.log(pass);
+// }).catch((fail)=>{
+//     console.log(fail);
+// })
+
+
+
+
+// Promise.all ====>
+
+// let p1 = new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//         console.log("First promise")
+//         resolve(10);
+//     }, 1 * 1000)
+// })
+// let p2 = new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//         console.log("Second promise")
+//         resolve(20);
+//     }, 2 * 1000)
+// })
+// let p3 = new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//         console.log("Third promise")
+//         resolve(30);
+//     }, 3 * 1000)
+// })
+
+// Promise.all([p1,p2,p3]).then((pass)=>{
+//     console.log(pass);
+//     for(let el of pass){
+//         console.log(el);
+//     }
+// }).catch((err)=>{
+//     console.log(err);
+// })
+
+
+
+
+
+// Optimized code of Promise.all =====>
+
+// let fun = function(a,b){    
+//     return (resolve,reject)=>{
+//             setTimeout(()=>{
+//                console.log(`${a} Promise`);
+//                 resolve(b);
+//             },b * 100)
+//         }    
+// }
+
+// let a1 = new Promise(fun("first",10));
+// let a2 = new Promise(fun("Second",20));
+// let a3 = new Promise(fun("Thrid",30));
+
+// Promise.all([a1,a2,a3]).then((pass)=>{
+//     console.log(pass);
+//     for(let i in pass){
+//         console.log(i,pass[i]);
+//     }
+// }).catch((err)=>{
+//     console.log(err);
+// })
+
+
+
+
+
+// callback hell or pyramid of doom code optimization by promise ===>
+const heading1 = document.querySelector(".heading1");
+const heading2 = document.querySelector(".heading2");
+const heading3 = document.querySelector(".heading3");
+const heading4 = document.querySelector(".heading4");
+const heading5 = document.querySelector(".heading5");
+const heading6 = document.querySelector(".heading6");
+const heading7 = document.querySelector(".heading7");
+
+function changeText(element,text,color,time){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            if(element){
+                element.textContent=text;
+                element.style.color=color;
+                resolve();
+            }else{
+                reject();
+            }
+        },time)
+    })
+}
+
+// heading color, text , time changing by promise ======>
+
+// changeText(heading1,"one","red",1000).then(()=>
+//     changeText(heading2,"two","yellow",1000)
+// ).then(()=>
+//     changeText(heading3,"three","orange",1000)
+// ).then(()=>
+//     changeText(heading4,"four","purple",1000)
+// ).then(()=>
+//     changeText(heading5,"five","green",1000)
+// ).then(()=>
+//     changeText(heading6,"six","blue",1000)
+// ).then(()=>
+//     changeText(heading7,"seven","green",1000)
+// ).catch((error)=>{
+//     alert(error);
+// })
+
+
+
+//something about promise===>
+Promise.resolve() //ye ak promise return kerta hai is par hum then method laga sekta hai
+Promise.resolve(2).then((a)=>{
+    console.log(a);     //or then be ak promise return kerta hai  
+    // return undefined ==> yha then ak promise return kr rha hai hum fir sa then method use kr sekta hai
+    a+=5;
+    return a;   //==> ab yha a return kr dia iska matlab ke ak promise return kia us par humna then method use kia nicha   
+}).then((val)=>{    //===> then method use kia again jo promise uper wala then na return kia tha 
+    console.log(val);       
+    // return undefined ==> or asa he ye then be ak promise return kr rha hai jiski value undefined hai
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

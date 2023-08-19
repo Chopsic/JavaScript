@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getter and setter</title>
+</head>
+<p>getter and setter</p>
+<p>Static method or propertys</p>
+<body style="background-color: gray; font-size: larger; color: aqua;">
+<script>
+//Getter and Setter ====>
+
+class Person{
+    constructor(firstname,lastname,age){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+    }
+    get fullname(){ //yha humna get key use kia hai issa ya function ak property ke tra use kringa na ke function ke tra call kringa
+        return `${this.firstname} ${this.lastname}`;
+    }
+    set fullname(fullname){ //set ke help sa hum kisi be key ke value ko change kar sekta hai
+        let [firstname,lastname] = fullname.split(" ");  //=>yha destructuring sa humna full name ko alag alag tod lia or nich alag alag store be kar dia
+        this.firstname = firstname; //==> jo humna split method sa fullname ko alag alag kia tha unko yha store kar rhae hai  
+        this.lastname = lastname;
+    }
+}
+
+let p1 = new Person("amit","saini",21);
+// console.log(p1)
+// console.log(p1.fullname)    //==>ya ab property ke tra use ho rha ha kyuki humna upper get keyword use kia hai;
+
+Person.fullname = "Amit saini";
+// console.log(p1.firstname)   
+// console.log(p1.lastname)
+
+
+
+// static methods or property in class ====>
+// inko call karna ka lia huma koi be object bana ke jrurat nhi hoti hai hum inko sidha class ka name dot propert ya method ka name sa access ya call kar sekta hai
+// inko banana ka lia huma method ka aaga ya prperty ka aaga static likhna hota hai
+
+class Myclass{
+    static key = "Static Property"
+    
+    static about(){
+        return "static method"
+    }
+} 
+
+//==>inko use karna ka lia humna koi be object nhi banaya hai sidth access kar lia hai class name sa he
+// console.log(Myclass.key)    
+// console.log(Myclass.about())
+
+
+
+
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>

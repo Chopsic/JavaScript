@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+<p><b>Closure ==></b></p>
+<script>
+// Closure ==> jab koi function apna ander wala kisi be function ko return karta hai tab jo ander wala function hota hai wo apna lexical environment 
+//ko be sath lekar return hota hai issi ko closure kehta hai.
+// For Example ====>
+function outerfunction(firstname,lastname){
+    function innerfunction(){
+        console.log(firstname,lastname);
+    }
+    return innerfunction;
+}
+const ans = outerfunction("Amit","Saini");
+// ans();
+
+//===> is example ma humna ak outerfunction banaya hai jo ke apna ander wala innerfunction ko return ka rha hai or jo innerfunction hai wo firstname or lastname
+// 2 chijo ko print kar rha hai lakin jo innerfuntion hai usska pass koi be firstname or lastname ka koi be variable nhi hai lakin closure ma yhi hota hai ke 
+//jab outerfunction innerfunction ko return karega tab innerfuntion apna sath lexical environment ka variable ko sath lekar return hoga to innerfun ka pass firstname or last name ka access hoga
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>

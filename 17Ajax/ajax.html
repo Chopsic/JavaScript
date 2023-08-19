@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX </title>
+</head>
+<body>
+<h3>AJAX => Asyncronous JavaScript ans XML</h3>
+<p>AJAX is a web development technique using in many web technologies on the "client-side" to create Asyncronous web Application</p>
+<p>it is used to updating data in a web page without reloading a web page</p>
+<script>
+// AJAX => Asyncronous JavaScript and XML
+
+// with AJAX ==> web applications can send and retrieve data from server asyncronously[in the backgrounds]
+// without interfering with the display and bechviour of existing page.
+
+//==>we don't use data in XML format now;
+//==>we use JSON now;
+
+//we have 3 most common ways to create HTTP Request to server ===>
+// 1.) xmlHTTPRequest (old way to doing);
+// 2.) fetch API (new way to doing) [ES06 - 2015]
+// 3.) axios (third party library)
+
+// [some imp property ==> {readyState, onreadystatechange, onload, status}]
+// readyState ==> holds the status of the XMLHttpRequest like [0,1,2,3,4];
+// onreadystatechange ==> isma ak function assign kerta hai wo jab chelta hai jab readystate ke values change hoti hai;
+// onload ==> isma be ak function assign kia jata hai wo sirf jab chelta hai jab readystate ke value 4 hoti hai matlab request recieved ho jati hai;
+// status ==> returns the numerical HTTP status code of the XMLHttpRequest's response[200: "OK"; 403: "Forbidden"; 404: "Page not found"].
+
+
+
+
+// creating HTTP Request by XHT[xmlHTTPRequest] ========>
+
+const URL = "https://jsonplaceholder.typicode.com/posts";  //===> ye API hai jo huma fake JSON data deti hai
+const XHR = new XMLHttpRequest();   //==> yha ak object banaya hai jiski help sa hum XMLHttpRequest kringa
+XHR.open("GET",URL);    //==> yha hum open method ka ander request likhta hai jo huma karni hai or API ka path deta hai  jha par karni hai
+XHR.onload = function(){    //==> yha  onload ma function assign kia jo sirf jab chalta hai jab readystate ke value 4 hoti hai ye function hum onreadystatechange ma be assign kar sekta hai lakin wo jab jab chalta hai jab ready state ke value change hogi
+    if(XHR.status >=200 && XHR.status <=299){   //==> response huma tab milta hai jab status 200 hota hai islia humna condition laga de wo sirf jab he chalega 
+        const data = JSON.parse(XHR.responseText);  //==> humara pass jo JSON aaya tha uska data type string tha humna ussa JS ke object ma change kar dia JSON.parse sa
+        // console.log(data, typeof data)  //==> yha objects print ho jayenga jo huma respone mila hai request sa  
+    }else{  //==> koi error hua to else wala block chal jayega
+        console.log("somthing went wrong");
+    }
+}
+XHR.onerror = ()=>{     //=> ya function only jab execute hoga jab internet issue hoga
+    console.log("somthing went wrong")
+}
+XHR.send()  //=> bina send request kia humara pass koi data nhi ayega ye wala or open or onload ye teeno huma karna hota hai tabh request hoti hai
+
+
+
+
+
+// callback hell with XHR ==========>
+const URL1 = "https://jsonplaceholder.typicode.com/posts";  
+const XHR1 = new XMLHttpRequest();
+XHR1.open("GET",URL1);
+XHR1.onload = function(){
+    if(XHR1.status >=200 && XHR1.status <=299){
+        const objects = (JSON.parse(XHR1.response)) //==> yha humna data mila gya jo humna request ke the uska
+        const id = objects[2].id;       //===> ab humna dubara request karni hai jiski id 3 hai uss object ke lia  to humna yha sa id la le uss object ke
+        const url = `${URL1}/${id}`     //===> to jha huma request karni hai us api ka URL hum yha bana rhae hai
+        const xhr = new XMLHttpRequest();   //==> baki nicha wohe kaam repeat hoga jo humna upper kia hai issi ko callback hell kheta hai 
+        xhr.open("GET",url);
+        xhr.onload = ()=>{
+            if(xhr.status >=200 && xhr.status <=299){
+                const data = JSON.parse(xhr.responseText);
+                // console.log(data["id"])  //==>agar dekhna hai to uncommnet karo
+            }else{
+                console.log("somthing went wrong")
+            }
+        }
+        xhr.send();
+        
+    }else{
+        console.log("somthing went wrong");
+    }
+}
+XHR1.onerror = ()=>{
+    console.log("somthing went wrong")
+}
+XHR1.send()
+
+
+
+
+
+// XHR using Promises   =======>
+function sendRequest(method,api){
+    return new Promise((resolve,reject)=>{
+        const newXHR = new XMLHttpRequest();
+        newXHR.open(method,api);
+        newXHR.onload = ()=>{
+            if(newXHR.status >=200 && newXHR.status <=299){
+                resolve(newXHR.responseText);
+            }
+            else{
+                reject(new Error("somthing went wrong"));
+            }
+        }
+        newXHR.onerror = ()=>{
+            console.log("internet problem");
+        }
+        newXHR.send();
+    })
+}
+
+//==> ye function promise return karega jis par hum then cath method use kar sekta hai 
+const api = "https://jsonplaceholder.typicode.com/posts";
+sendRequest("GET", api)
+    .then(respone=>{
+        const data = JSON.parse(respone);
+        return data;        
+    }).then(data=>{
+        const id = data[3].id;
+        return id; 
+    }).then(id=>{
+        const newAPI = `${api}/${id}`;
+        return sendRequest("GET",newAPI); 
+    }).then((newResponse)=>{
+        const newData = JSON.parse(newResponse);
+        // console.log(newData);        //==> uncomment if you want to see
+    }).catch((error)=>{
+        console.log(error)
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</script>
+</body>
+</html>

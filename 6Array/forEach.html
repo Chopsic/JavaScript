@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Array Methods</title>
+</head>
+<body>
+    <li>forEach</li>
+    <li>map</li>
+    <li>filter</li>
+    <li>reduce</li>
+<script>
+//forEach *************************************************>
+//foreach purana loop hai issa phela use kerta tha par aap iski jugha forof loop ya traditional for loop use kar sekta ho 
+//for each loop esa kaam karta hai jab huma array ke element or index no. chaiya hota hai tab hum forEach loop ka use kerta hai
+//forEach ak function ko as aargument leta hai us function me hum 3 parameter pass kar sekta hai
+//first parameter ==> Array ka element ko dikhata hai,
+//second parameter ==> Array ka index no. ko,
+//third parameter  ==> ye optional hai ye array ko he print kar deta hai,hum sirf first or second ko he use kerta hai
+
+let a1 = [1,2,3];
+function acall(a,b,c){   //humna yha ak function banaya hai jo 3 parameter lega
+    console.log(a)    //==>1, ye array ka element hai
+    console.log(b)    //==>0, array ke first element ka index no. hai
+    console.log(c)    //==>[1,2,3]  ye array hai
+}
+// a1.forEach(acall);    //yha humna forEach loop use kia hai ye ak function ko as a argument leta hai or us function me jo 3 parameter hota hai wo Array ke element,index no, or Array ko show karta hai
+
+// forEach ko hum asa bhe kar sekta hai ========>
+ a1.forEach((a,b)=>{   //humna for each me function ko call karna ke jugha usi ma ak arrow function bana lia
+    // console.log(a);   //ye array ke element ko represent kar rha hai
+    // console.log(b);   //ye array ke index no. ko represent kar rha hai
+});
+
+//map method *************************************************>
+//jab huma kisi array ma kuch change karna hota hai like ke har ak element ma kuch add ], multiply kuch or karna ho
+//map humesha ak new array return karta hai islia hum jo callback fun. pass karta hai ussa huma return karna hota agar return nhi kringa to undefined dega jini bar loop chalega
+//map method be ak loop ke jesa kaam karta hai [lakin ye forEach sa thoda sa alag hai] jab huma array a kuch changes karna hota hai tab hum map method ka use karta hai ye huma array he return karta hai
+//map method ak function ko as aargument leta hai us function me hum 3 parameter pass kar sekta hai
+//first parameter ==> Array ka element ko dikhata hai,
+//second parameter ==> Array ka index no. ko,
+//third parameter  ==> ye optional hai ye array ko he print kar deta hai,hum sirf first or second ko he use kerta hai
+
+let b1 = [2,3,4];   
+function bcall(a,b,c){  //humna yha ak function banaya hai jo 3 parameter lega
+    console.log("Element->", a)    //==>1, ye array ka element hai
+    console.log("Index->", b)    //==>0, array ke first element ka index no. hai
+    console.log("Array->",c)    //==>[1,2,3]  ye array hai
+}
+// b1.map(bcall);
+
+// map method ko hum asa bhe kar sekta hai=========>
+let arr = b1.map((a)=>{   //ak arr variable banaya hai map method huma ak array return karega, map ke ander humna ak callback function pass kia ha or us function ma ka parameter pass kia h jo array ke elements ko lega    
+    return (a*a);       // ye humna [a*a]return karega wo arr variable ma store hota rhaega jab tak array ke elements aata rhaenga    
+})    //agar uper function ke ander hum return ke jugha console kar dega to wo print kar dega or [arr]variable ma kuch be nhi store hoga islia hum map method ko jab use karta hai to function sa hum value return jaruar karata hai 
+
+console.log(arr);       //map method na huma ak array return kia tha jo humna [arr]variable ma store kara lia
+
+
+let array = [       //yha humna ak array banaya hai jisak ander 4 objects hai huma in objects ke ander sa username lena hai
+    {username : "Amit",gender : "male"},
+    {username : "Palak",gender : "female"},
+    {username : "Sam",gender : "male"},
+    {username : "Neha",gender : "female"},
+]
+let names = array.map(({username})=>{    //humna parameter destructuring karka username parameter pass kia hai 
+    return username;     //function huma array ke ander objects ke username return karega jo ke [name]variable ma store ho jayenga    
+}) 
+// console.log(names);  //ya ak array print karega isma array ke objects ke username store hai
+
+
+
+//filter Method  *******************************************>
+//jab huma kissi array ma sa kuch chattana ho like even, odd ya kuch or
+//filter method ka jo callback fun hota hai wo humesha ak boolean value return karta hai
+//filer method hum jab use karta hai jab huma kuch elements chaiya kisi array ma sa
+//filter method ak callback function leta hai wo function 3 parameters leta hai, [1st ma element jata hai], [2nd ma index], or [3rd ma pura array] 
+//filter method hamesha boolean values return karta hai [true ya false]
+let a2 = [1,2,3,4,5,6,7,8];     
+let even = a2.filter((a)=>{     //even ak variable hai jika ander ko values store hongi jin values par function true return karega
+    return a%2==0;      //agar return na karka isko print kar denga to even ma empty array ayega, islia hum return karata hai
+});
+// console.log(even); //---> ye [2,4,6,8] print karega
+
+let odd = a2.filter(a=>a%2!==0);    //jab arrow function ma ak parameter or nicha ak line ka code ho tab hum brackets ko hata sekta hai
+// console.log(odd)   //---> ye [1,3,5,7] print karega
+
+
+
+//reduce Method ********************************************
+//jab huma kisi array ka sum ya website par cart ma products ka price ka sum karna ho
+//reduce method hum basically jab use karta jab huma pura array ka sum wegra chaiya hota hai
+//reduce method ak callback function leta hai, us function ma 4 parameter pass kar sekta hai,
+//1st parameter ko ==> Accumulator kheta hai, jab code execute hota hai tab isma first time par array ke 1 value jati hai isa hum change be kar sekta hai,
+// jha callback func. close hota hai uska baad coma lagakar accumulator ya 1st parameter ke value set kar sekta hai, first time ka baad accumulator ke value wo hoti hai jo function return karta hai,
+// agar hum return nhi karata hai to accumulator ke value kuch be nhi hogi wo undefinder hogi 
+//2st parameter ko ==> current value kheta hai, isma array ke values aati rheti hai
+//3st parameter ma index no jata hai , or 4th ma array jata hai 
+
+let red = [10,20,30,40,50];
+let sum = red.reduce((accumulator,currentvalue)=>{     //1st time par accumulator=0 kyuki jha function close ho rha hai wha accumulator ke value define kar rheki hai usa baad accum. ke value vo hogi jo functioon return karega
+    console.log(accumulator," ",currentvalue,"<br>")   //yha conse ma hum value ko dekh sekta hai ke kesa values change ho rhi hai
+ return accumulator+currentvalue;       //agar hum function sa return na la kuch to accumulator ke value 1st time ka baad undefined ho jayegi
+},0)
+//console.log(sum)  //last ma sum ka ander total sum aa gaya
+
+//real life example of reduce method ----------->
+
+let products = [      //ak array hai jisma kuch object hai huma total price nikalna hai
+    {id : 1, name : "p1", price : 300},
+    {id : 2, name : "p1", price : 3000},
+    {id : 3, name : "p1", price : 200},
+    {id : 4, name : "p1", price : 800},
+    {id : 1, name : "p1", price : 500},
+]
+let cart = products.reduce((total,current)=>{  //reduce ka ander callback fun hai jia 2 parameter pass kia hai [total,current] total ke value 0 set kar de hai
+    return total + current.price;   //yha 1st time [total=0] hai current ma object ayega usma sa huma sirf price chaiya to [current.price] plus kia hai uska baad total ma sum jayega [t+c] ka jo fuc. na return kia hai
+},0)    //yha function end hona ka baad huma accumulator(total) ke value 0 set ke hai
+console.log(cart);
+
+
+</script>
+</body>
+</html>

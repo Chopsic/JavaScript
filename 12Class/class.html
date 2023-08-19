@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+<body style="background-color: gray; font-size: larger;">
+<script>
+// class ==>
+// ye class 2015[ES06] ma aai the
+//inka ander sara kaam wesa he hota hai jesa humna constructor function banaya jo object create kar rha tha
+//jisko hum new keyword ka through call kar rahe tha or uska ander this keyword sa keyvalue pair add kar rhae tha
+
+//class ka ander be sara kaam asa he hota hai bas iskma thoda sa code improvise ho jayega 
+//===> jesa ke isma sabsa phela class keyword likna hota hai fir class ka name
+//uska ander constructor function banaya jata hai jo ke jab class ka bhar new ke help sa koi oject banta hai tab apna aap call ho jata hai 
+//iska ander be this keyword sa keyvalue pair add hota hai jo object ko refer karta hai jab new keyword sa hum object banata hai to usko refer karta hai
+//isma huma koi be functions(method) ko constructor function ka ander prototype ma add karna ke jrurat nhi hoti sidha class ka ander asa he likh deta hai bina function keyword ka
+
+class CreateUser{
+    constructor(firstname,lastname,age,gender){ //constructor function class ka bhar object banta he call hota hai
+        // console.log("constructor called")
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.gender = gender;
+    }
+    about(){
+        return `${this.firstname} is ${this.age} years old`
+    }
+    is18(){
+        return this.age<=18;
+    }
+}
+let user1 = new CreateUser("amit","saini",12,"male"); //yha humna class ko call kia 
+// console.log(user1.about())  //==> or humna jo object bana hai ussa function ko call karka be dekha lia
+
+
+
+
+// class practice ===>
+class Animal{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    about(){
+        return `${this.name} is eating`;
+    }
+    old(){
+        return this.age <= 1;
+    }
+    cute(){
+        return `${this.name} is very Cute`;
+    }
+}
+let dear = new Animal("deer",12);
+// console.log(dear);
+// console.log(dear.about())
+// console.log(dear.old())
+
+
+//extend========>
+//yha hum ak class ko extend karka uski propety method or constructor ko use kar sekta hai
+class Cat extends Animal{   //iska pass koi be constructor nhi hai
+    cute(){
+        return `${this.name} is very Cute`;
+        super.cute();   //==>issa animal class ka be method call ho jayega
+    }
+}
+let cat = new Cat("pussy",);    //extend sa hum animal ka constructor function ko use kar pa rhae hai
+// console.log(cat);       //==> yha obj be ban gya hai
+// console.log(cat.about());   //animal call ka about method ko be use kar pa rhae hai
+
+// console.log(cat.cute());    //lakin cat class ma be ya method hai or animal class ma be hai to ya cat wala he method call hoga
+//super ==> represent parent class method in base class
+//agar animal wala method ko be call karna chayeta hai to super keyword ka use hoga jo humna upper base call ka ander cute function ma kar lia hai
+
+
+
+//super keyword ====> use of super keyword
+// yha dog class hai jo ke animal class ka sath extend ke hui hai isma ak constructor function use kia hai jo 3 argument lega
+//lakin humna super ke help sa ya kia ke name or age to upper animal class ka constructor ko da denga or gender ko dog class ka constructor la lega
+class Dog extends Animal{
+    constructor(name,age,gender){   //3 parameter pass kia hai
+        super(name,age);    //super ke help sa ya dono paramenter animal class ka constructor lega or baki ak ko dog class ka const. lega
+        this.gender = gender;    //this sa wo 3rd argument dog class ma jo obj banega usma add ho jayega
+    }
+    gen(){
+        if(this.gender=="male"){
+            return `${this.name} is ${this.gender}`
+        }
+        else{
+            return `${this.name} is ${this.gender}`
+        }
+    }
+
+}
+
+let dog = new Dog("rockey",12,"male");
+// console.log(dog)
+// console.log(dog.about())
+// console.log(dog.gen())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>

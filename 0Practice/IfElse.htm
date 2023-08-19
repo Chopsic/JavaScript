@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avoid IF ELSE</title>
+</head>
+<body>
+<script>
+function getPrice(item){
+    if(item === "Burger"){
+        return 200;
+    }
+    else if(item === "Pizza"){
+        return 500;
+    }
+    else if(item === "Sandwitch"){
+        return 400;
+    }
+    else if(item === "Juice"){
+        return 200;
+    }
+}
+console.log(getPrice("Burger"))
+
+
+//Improve Quality =====>
+let items = {
+    Burger : 200,
+    Pizza : 500,
+    Sandwitch : 400,
+    Juice : 200
+}
+function Price(item){
+    return items[item]
+}
+console.log(Price("Burger"))
+
+    
+</script>    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Change</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button{
+            display: inline-block;
+            padding: 10px 20px;
+            outline: none;
+            border: none;
+            border-radius: 30px;
+            background: rgb(226, 223, 223);
+        }
+        button:hover{
+            background: white;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+<button>Change</button>
+<script>
+    const btn = document.querySelector("button");
+    const body = document.body;
+    btn.addEventListener("click",(e)=>{
+        let r = Math.floor(Math.random()*256);
+        let g = Math.floor(Math.random()*256);
+        let b = Math.floor(Math.random()*256);
+        body.style.background = `rgb(${r},${r},${b})`;
+        e.target.innerText = `rgb(${r},${r},${b})`;
+    })
+</script>
+</body>
+</html>

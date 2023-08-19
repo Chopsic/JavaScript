@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-size: larger;">
+<pre>Object ==> 
+objects are used to hold key-value pairs, ya key value pairs ko order ya sequence ma da be sekta hai ya nhi be
+all of the keys in object are in String
+</pre>  
+
+<script>
+    let a = {name : "Amit", age : 20, hobies : ["cricket","football","basketball"]};
+    // console.log(a.name);        //object ke properties ko dekhna ke lia variable ka name dot property ka name;
+    // console.log(a["age"]);      //object ko square bracket se bhe dekh sekta hai lakin name ko double quotes ke ander likhna hota hai;
+    // console.log(a.hobies);          //object ke ander arary bhe ban sekta hai jesa naomal element call karka dekhta hai asa he isa bhe dekh sekta hai;
+    // console.log(a.hobies[0]);       //object ke ander Array ko hum bracket ke ander call nhi kar sekta hai wo simple dot name se he call hota hai
+
+    // a["qualification"] = "graduation";      //add key value pair in object by square bracket 
+    // a.qualification = "graduation";      //add key value pair in object by dot
+    // console.table(a)
+
+
+
+
+    // Object Iteration[iterate ka matlab hota hai loop chalana] ----------------->
+    // for in loop in object
+
+    for(let key in a){
+        console.log(key)        //key object ka properties ka name print krega
+    }
+    
+    // agar name or property dono dekhna hai to
+    for(let key in a){
+        console.table(a[key])       //ye huma objects ke values return krega
+    }
+    // hum [Object.keys()] se bhe Object ka Array bnaker name or properties ko dekh sekta hai
+    console.table(Object.keys(a));      //i s [Object.keys()] function se hum object ko array bna sekta hai
+    
+    let b = Object.keys(a);                 
+    console.log(Array.isArray(b))       //is function se hum dekh sekta hai ke object array ban gya ya nhi;
+
+
+
+    // create object by different variable ==========>
+    const key1 = "objkey1"; 
+    const key2 = "objkey2";  
+    const value1 = "myvalue1";
+    const value2 = "myvalue2";
+    const obj = { };
+    obj[key1] = value1;    //yha key1 ak variable hai islia isa bracker me likha hai
+    obj[key2] = value2;    //agar variables ko double quotes me likhenga to vo variable name ke place par khud store hoga   
+    console.table(obj);      //lakin huma variable ke value store karni hai islia huma variable ko without quotes likhta hai or name ko double quotes mai;
+    // isko asa bhe kar sekta hai
+    const newobj = {
+        [key1] : value1,
+        [key2] : value2
+    }
+    console.table(newobj)
+
+
+    //spread operator in object ===========>
+    let obj1 = {
+        key1 : "value1", 
+        key2 : "value2", 
+    }    
+    let obj2 = {
+        key1 : "value",        
+        key3 : "value3", 
+        key4 : "value4", 
+    }    
+    //ak object ma do same keys nhi ho sakti islia object 2 ke key1 obj1 ke key 1 ko replace or overwrite kar degi
+    let newobject = { }
+    newobject = {...obj1,...obj2, key5 : "value5"}       //yha curley brackets ke ander spread operator use kia hai
+    console.table(newobject);
+    
+    //spread operator sa hum position bhe dekh sekta hai elements ke =======>
+    let abcd = "abcdefghijklmnopqrstuvwxyz";
+    let newobb = { };
+    newobb = {...abcd};
+    console.table(newobb);          //jab sting sa object banata hai to name ma indexing no. hota hai or value ma jo string ka character ota hai;
+
+
+    //object destructuring ======================>
+    // object destructuring ka matlab hota hai object ma sa variables banana ya new object banana
+    
+    const band = {
+        name : "led",
+        song : "way to heaven",
+        year : "2000",
+        another : "kashmir"
+    }
+    let {name,song,...myobb} = band;     //object ma jo name hota hai usi name sa variable banta hai lakin array m apni taraf se variable ka name dal sekta hai        
+    // console.log(name);      
+    // console.log(song);
+    // console.table(myobb);        //myobb ak new object hai jiska ander bachahue object ke value hai 
+
+    //agar variabe ka name change karna hai to name ke aaga [:varname] : lagake variable ka name likh do to name change ho jayega
+    // let {name:var1,song:var2} = band;       //ab name ma kuch nhi hai or variable ka name var1 hai 
+    // console.log(var1); 
+    // console.log(var2); 
+
+
+    
+
+
+</script>
+</body>
+</html>

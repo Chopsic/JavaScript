@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>class => collection of data and functions</pre>
+</body>
+<script>
+
+// constructor ==----------------------->
+// ak asa block jo value la sekta ha lakin return nhi kar sekta 
+//ye sirf class ke ander he ban sekta hai
+// ye automatic he run hota hai isa call karna ke jrurat nhi padti
+
+class construct{
+    constructor(){
+        document.write("Constructor");
+    }
+    hello(){
+        document.write("Function")
+    }
+}
+// m1 = new construct()  //===>humna sirf object banaya hai or isma constructor block run ho rha hai 
+
+
+//class => collection of data and functions
+// for making class use class keyword ------------------>
+    class myclass{
+        a = 5;
+        b = 6;
+        hello(){
+            document.write("Function");
+        }
+    }
+    //before using class data and functions you must need to make objects outside the class
+    //b1 and b2 are objects they are use for using class things 
+    b1 = new myclass();   //new is use for creating object outside the class
+    b2 = new myclass();   
+    // document.write(b1.a,"<br> <br>");
+    // b1.hello();
+
+
+class rect{
+    len = 0;  
+    bre = 0;
+    get(a,b){
+        this.len = a;  //this represent the object inside the class
+        this.bre = b;
+    }
+    area(){
+        document.write(this.len*this.bre);
+    }
+    peri(){
+        document.write(2*(this.len+this.bre));
+    }
+}
+a1 = new rect();
+// a1.get(5,5);
+// a1.area();
+// a1.peri();
+
+
+// class extends ---------------------->
+class first{
+    hye(){
+        document.write("First hye","<br>");
+    }
+    hello(){
+        document.write("First hello","<br>");
+    }
+
+}
+class second extends first{
+    
+    hello(){
+        document.write("Second Hello" ,"<br>");
+        super.hello()
+    }
+    hii(){
+        document.write("Second  Hii" ,"<br>");
+    }
+}
+f1 = new first();
+// f1.hye()  //==>first hello
+s1 = new second();
+// s1.hello()  //==>Second hello
+// s1.hii()  //==>Second hii
+
+//agar hama second class ka object sa he first class ka function call karna ha to huma second class ko extend karna padega first class ke sath
+// s1.hye()    //==>first hye   //isma s1 se he hye function ko call kar lia 
+
+//agar hamara pass same function hai dono classes ma, to jo child class hai sirf uska function call hoga 
+// lakin agar parent class ke function ko bhe call karna hai to huma child class me jo same function hai uskma [super.function_name()] likhna hoga
+// super ==>parent class ke function ko represent karta hai jab child ke pass be same function ho. 
+// s1.hello()   //==>second hello or first hello     // dono class ke function call ho jayenga
+
+
+</script>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>Array ==> collection of multiple items in a single variable</pre>
+</body>
+<script>
+// Array ==> collection of multiple items in a single variable
+    // let a1 = [10,20,30,40,50,20,50];       //creating an Array   
+    // let a2 = new Array(10,20,30,40,50)  //second method for creating an Array
+    // document.write(a1,"<br><br>");
+    // document.write(a1.lastIndexOf(50),"<br><br>");      //jo last ma 50 ha uska index no.
+    // document.write(a1[2],"<br><br>");      //print element whose index no is 2
+    // document.write(a1.includes(10),"<br><br>")      //inclure check karta hai array me element hai ya nhi     
+    // document.write(a1.indexOf(30),"<br><br>")       //indexof index no batata hai elements ka
+    
+
+    let x = [1,2,3,4,5,6,7];
+    // document.write(x.fill(0));   //convert all element of an array in 0;
+    // document.write(x.join(""));    //change into string and anything after each element
+
+
+    //convert Array to String
+    // let a = [1,2,3,4,5];
+    // document.write(a.toString());
+
+    
+    //Convert string to Array =============>
+    // let y = "ABCDEFGHI";
+    // document.write(y.split(""));            // convert string to array[split me close string lagani jaruri h warna pruri sting ko ak element consider karega]
+    // document.write(Array.from(y))           // convert string to array
+    // document.write([...y]);                  // convert string to array  by spread operator     
+
+
+
+    // loops in Arrays --------------------->
+
+    //for of loop [print elements of array]
+    // let fruits = ["apple" ,"mango","grapes","banana"]
+    // for(let fruit of fruits){
+    //     console.log(fruit)
+    // }
+
+    //for in loop [print index number]
+    // let fruits = ["apple" ,"mango","grapes","banana"]
+    // for(let index in fruits){
+    //     console.log(index)
+    // }
+
+    // let fruits = ["apple" ,"mango","grapes","banana"]
+    // for(let index in fruits){
+    //     console.log(fruits[index])
+    // }
+
+
+    //Object inside Array ==================================>
+    let users = [
+        {firstName : "Amit" , age : 20 , gender : "male"},
+        {firstName : "Sumit" , age : 19 , gender : "male"},
+        {firstName : "Aarti" , age : 18 , gender : "female"}
+    ]
+    console.log(users[0])         //access object in array
+    console.log(users[0].firstName)      //access object perticular key in array by dot name
+    console.log(users[0]["firstName"])   //access object perticular key in array by quotes in square brackets;
+    
+
+
+    // Nested Destructuring in Arrays ========================>
+
+    // yha humna user1, user2 and user3 name ke 3 variable banaye hai jinka ander teeno array ke objects store kar dia hai 
+    const [user1,user2,user3] = users   
+    console.log(user1);      
+    console.log(user2);
+    console.log(user3);
+
+    // yha hum Array ke ander object or object ke ander perticular keys ko alag variables ma stroe karenga    
+    const [{firstName,age}, ,{gender} ] = users     //second array ko skip karna ke lia humna bich ma => , , comma lagaya hai
+     console.log(firstName);     //isma object first ka firstname variable banaya hai 
+     console.log(age);           //isma object first ke age ka variable banaya hai
+     console.log(gender);        //or isma obect third ka gender ka variable banaya hai
+
+    //agar object ke variables ka name change karna hai =======================>
+
+    const [{firstName:name,age:saal}, ,{gender:ling} ] = users
+    // ab firstName, age or gender ka name change kr dia ha or inka ander kuch bhe nhi ha    
+    console.log(name);
+    console.log(saal);
+    console.log(ling);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

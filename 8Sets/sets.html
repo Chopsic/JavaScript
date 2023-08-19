@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+<body style="font-size: larger;">
+<pre>
+*object ka pass length property nhi hoti 
+
+Iterables =====>
+Jinka upper hum for of loop chala sekta hai 
+Ex: String and Array 
+object Iterable nhi hai kyuki iska upper for off loop nhi chala sekta
+
+Array-Like objects =====>
+Jinka pass length property hoti hai or indix base access ho unhae hum Array like object kheta hai
+
+Sets =====> inka ander Iterables pass kar sekta hai jesa ke strings ya fir Array
+</pre>
+<script>
+// Set(it is iterable) ==========================================>
+// set ma sirf iterables he pass kar sekta hai ==> string or array but not objects
+//but aap non iterable add kar sekta ho set banana ka baad jesa ke number, object or any others
+//store data  ==> store unique elemetns no duplicate elements allowed
+//Ordered is not guarented ===> jaruari nhi ke jis sequence ma elements store kara hai wesa he mila aage picha mil sekta hai
+//no index based access  ==> index number sa elements ko access nhi kar sekta
+//set also have its own methods =====> add, has, clear, delete
+
+// Set is a data structure which can store unique values or elements
+//set ka ander iterables he pass kar sekta hai like string or array
+
+
+let set = new Set([1,2,3,3,4,5,5,1,2]);  //set ka ander ar array pass kia hai
+// console.log(set)  //===>ye sirf array ke unique elements ko he print karega
+
+let a = [1,2,3,4,5,6,1,2,3,4,5,6,1,1,2,3,3,5];  
+let s = new Set(a);     //==>//hum array ko alag sa banakar be set ka ander pass kar sekta hai
+// console.log(s); 
+
+let st = new Set("Amit Saini")  //set ma ak string pass kar de kyuki string be ak iterable hai
+// console.log(st);    //===> capital and lower case elements alag hota hai or space be count hota hai isna unique elemets ko print kia or i ko skip kar dia wo 3 bar tha
+
+//==>is array ma sa huma duplicate elements remove karna hai 
+let d = [1,2,3,4,5,6,1,2,3,4,5,6,1,1,2,3,3,5];  
+let re = [...new Set(d)];   //===> new Set(d) sa huma ak set mil jayega jisma unique elemets honga or [...] sa wo set array ma convert ho jayega  
+// console.log(re)  //====> ak array dega jima unique elements hai
+
+//set methods add or has===============>
+//add ==> huma set ka ander values add karni hoti hai to hum add method ko use kerta hai
+//has ===> jab huma set ka ander value check karni hoti hai to has ko use kerta hai
+const an = [1,2,5,5,4,8,1];
+let numbers = new Set([[2],[5]]);  //===> ak empty set banaya hai or nicha elements add kar rhae hai .add sa
+numbers.add(1);  //===> isma 1 add ho jayega lakin nicha wala add nhi hoga
+numbers.add(1);
+numbers.add("string");  
+numbers.add([1,2,3]);   // ye array add ho jayega or nicha wala be kyuki ya dono array alaga hai inki sirf values same hai
+numbers.add([1,2,3]);   //or ye be add ho jayeda, javascript ka point of view sa sa dono alag alag array hai
+numbers.add({a:5})
+numbers.add(an)   //==> upper ak array banaya tha usko add kar rhe hai;
+numbers.add(an)   //===> lakin ye dubara add nhi hoga kyuki isa hum add kar chuke hai 
+// console.log(numbers)
+
+
+
+//===> has sa hum check karenga ke numbers Set ka ander 1 hai ya nhi ====>
+if(numbers.has(1)){     //numbers.has() sa check karenga ke wo num, string, ya array usma hai ya nhi hua to true dega or if block chl jayega
+    console.log("Pressent")
+}else{
+    console.log("Not Present")
+}
+//next condition ---------->
+if(numbers.has(0)){         //numbers.has() sa check karenga ke wo num, string, ya array usma hai ya nhi hua to true dega or if block chl jayega werna else
+    console.log("0 is present")
+}
+else{
+    console.log("0 is not present")
+    }
+
+//check set is iterable or not ==> hum for of loop laga kar dekhenga
+for(let num of numbers){
+    // console.log(num);   //===> ye set ka elements ko print kar dega
+}
+
+//find length of set===>
+let sets = new Set([1,2,3,4,5,6,7,8]);
+let lenth = 0;
+for(let key of sets){
+    lenth++;
+}
+// console.log(lenth)
+
+
+
+//How to access set elements by destructuring==============>
+let newset = new Set([1,2,3,4,5,6,7]);
+let [aa,bb,,cc] = newset;
+// console.log(aa)     //==> it will give 1
+// console.log(bb)     //=== it will give 2
+// console.log(cc)     //===>it will give 4 because we skip 3 element
+
+
+
+
+</script>
+</body>
+</html>

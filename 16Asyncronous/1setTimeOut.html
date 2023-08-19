@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetTimeOut</title>
+</head>
+<body>
+    <p>Jo humna abhi tak padha wo syncronous javascript programming thi lakin ab hum asyncronous programming padhenga lakin ye javascript ka
+        features nhi hai ye hume browser provide karta </p>
+    <p>setTimeOut ===> ye humesha ak callback function leta hai or minimum time leta hai ke callback function kitna time ma execute hoga 
+        or return ma ya ak id deta hai jiski help sa hum setimeOut ko execute hona sa phela he ussa band kar sekta hai jo ke wo execute nhi hoga</p>
+</body>
+<script>
+// console.log("script sctart");
+// let id = setTimeout(()=>{
+//     console.log("inside settiomeout")
+// },10)
+
+// for(let i=0;i<1000;i++){
+//     console.log(1)
+// }
+
+// clearTimeout(id);
+// console.log("script end")
+
+
+setTimeout(()=>{
+    
+    console.log("amit")
+    setTimeout(()=>{
+        console.log("hdh")
+    },2000)
+},2000)
+
+setTimeout(()=>{
+    console.log("amit saini");
+},2000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

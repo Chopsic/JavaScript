@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this keyword inside Event eventListner</title>
+</head>
+<body>
+    <button>one</button>
+    <button>two</button>
+    <button>three</button>
+    <button>four</button>
+<script>
+//this inside eventListner ===>
+//currentTarget ==>iska matlab hai ke kis par event lag rha hai;
+//Target ==> target a matlab hai ke kiski wajha sa event listen hua ya event trigger hua
+
+// humara pass 4 buttons hai or huma inka uper eventListen use karna hai to huma ak loop lagana hoga 
+//agar buttons ko querrySelector sa select select karenga to humara pass nodeList(static list) ayigi uss par hum koi be loop use kr sekta hai[for of, simple for loop, forEach be use kar sekta hai]
+//agar buttons ko kisi or method sa get kerta hai to humara pass HTMLcollection ayega uss par hum [simple for loop or for of loop use kar sekta hai]
+const btns= document.querySelectorAll("button");    //==> yha humna querryselector sa sara btn select kar lia 
+for(let i=0;i<btns.length;i++){     //==> humna traditional for loop use kia
+    btns[i].addEventListener("click",function(){    //==> or har ak btn par eventListen add kar dia
+        // console.log(this)       //===> ab yha hum this print kar k dekh rhae hai to jo object is function ko call karega is this ma wo he value ayegi
+        // console.log(this.innerText)  //isma this to btn hai jis par click kia hai or innerText sa uska text mil jayega
+    })  //==> agar jab one btn par event listen hoga to jo object hoga vo btn one hoga or function ke ander this ussi object ko refer kerta hai jo uss function ko call keta hai asa he har ak btn ke sath hoga
+}
+
+
+btns.forEach((btn)=>{       //abki bar huma forEach method use kia hai nodeList par hum sidha forEach method use kr sekta hai lakin htmlCollection par hum pahela htmlcollection ko array ma change krna padta hai
+    btn.addEventListener("click",()=>{      //==> yha har ak btn ke upper humna event listner use kar dia lakin isma humna arrow hunction use kia hai or arrow function ka this nhi hota 
+        // console.log(this)   //==> to jab be buttons par click hoga to this ke value window object print hogi iska lia niha ak tarika hai
+        // console.log(this.innerText)   //==> isma text print nhi hoga kyuki window object ma koi be innerText property nhi hoti to ye undefined dega
+    })
+})
+
+
+
+// event object in function =====>
+//jab hum eventListen use kerta hai tab jo callback function hum uska ander use kerta hai to eventListen hona par browser huma ak event object deta hai jisma event information hoti hai
+//ussa dekhna ka lia huma function ke ander ak argument pass kerna hota hai [e ya event] to jab wo function execute hota hai to hum uss object ko print kra sekta hai jisma kuch important information hoti hai
+
+
+for(let btn of btns){   //yha for of loop use kia 
+    btn.addEventListener("click",(e)=>{  //ab is callback function ko jab browser call kerega tab browser isma ak event object pass kar sega jisa nicha print kr k dekh sekta hai
+        console.log(e);     //==> yha event object ko print kr sekta hai
+        console.log(e.target)   //==> target event obejct ke he ak property hai jisma dekha sekta hai ke kis pr event trigger hua hai
+        console.log(e.currentTarget)    //ye be event obejct ke property hai ke event kiski wajha sa trigger hua hai
+        console.log(e.target.innerText)
+    })  
+}
+
+//huma yha decleration function or function expression ko use kia bina arrow function ko he use kerta ye dekh lia ke kon sa object event ko listen kar rha hai 
+//[matlab ke jo this ke value hum function me upper dekh rhae the wo humna event obejct sa he dekh le] hum kuch be use kr sekta hai lakin jab hum arrow fucntion use kerta hai to huma event object use kerna pdta hai kyuki iska this nhi hota
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>

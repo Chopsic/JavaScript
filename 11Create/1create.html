@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create function for creating Objects</title>
+</head>
+<body style="background-color: gray; color: yellow; font-size: larger;">
+<p>Create function for creating objects</p>    
+<script>
+//Create function for creating Objects============================>
+//jesa ke huma millions of people ka data store karna hai to hum itna objects ko khud nhi bana sekta hai
+//iska lia hum ak function bana dinga jo ke as a input lega or khud object create kar dega jab koi user apni information uss function ko dega
+
+
+const user = {
+    firstName : "Amit",
+    lastName : "Saini",
+    email : "mymail@gmail.com",
+    age : 20,
+    address : "Rajiv Nagar, Gurugram",
+    about : function(){
+        return `${this.firstName} is ${this.age} years old.`
+        },
+    is18 : function(){
+        return this.age>=18;
+    }
+}
+// console.log(user.about())
+// humara pass ak object hai user ka, lakin huma ab asa bhot sara object banana hai to usma bhot time lag jayega 
+// islia hum ak function bana rhae hai jo name, age, email, or address input lega or ak object create kar ka de dega
+
+
+// ye function 3 kaam karega
+// first ===> object create karega
+// second ===> object ma key value pair add krega
+// third ====> jo object function na banaya hai us object ko return krega
+function CreateObject(firstName,lastName,email,age,address){
+    const user = {};    //yha ak user name ka empty object banaya hai
+    user.firstName = firstName;   //uper jo object banaya ha usma keyvalue pair add kar rhae hai
+    user.lastName = lastName;     //isma lastname key hai or jo lastname ke value input ma ayegi vo uss key ma jaker uski value ban jayegi  
+    user.email = email;        //jesa isma email key hai or jab function call karenga tab jo input ma mail ayegi wo isma store ho jayegi  
+    user.age = age;        //asa he age be input ma ayegi or nicha wala address
+    user.address = address;     
+    //object ka ander hum function be add kar rhae hai jab object inko call karega tab wo object ke chijo ko print ya return karrega
+    user.about = function(){
+        return `${this.firstName} is ${this.age} years old.`
+        },
+    user.is18 =  function(){
+        return this.age>=18;
+    }
+    return user;    //or last ma humna user object ko return kar dia hai jo ke is function na create kia tha huma alag alag obj banana ke jrurat nhi padi
+    //humna sirf function call kia usma, object ke values ko as a argurment pass kar dia or function na he object bana dia usa hum kisi variable ma store kar sekta hai or use kar sekta hai
+}
+
+let store = CreateObject("amit","saini","amit@gmail.com",12,"faridabad");   //humna function call kia jo object ke values ko as a agrument la rha hai or wo ak object return karega jo humna store variable m store kar lia
+// console.log(store);  //iska ander object hai jo function call karna par usna return kia tha
+let myfun = store.about()   //store ma jo about method hai wo call kia  hai wo huma (this.firstName) return karega wo humna myfun variable ma store kar lia
+// console.log(myfun);  //isma [amit is 21 years old] ayega jo ke about na return kia tha
+// console.log(store.is18())    //is18 function humna sidha console ma he likh lia jissa wo sidha print kar dega
+
+
+let obj1 = CreateObject("palak","negi","palak@gmail.com",28,"kashmir");
+let obj2 = CreateObject("sam","yadav","sam@gmail.com",18,"gurugram");
+let obj3 = CreateObject("ankit","pal","ankit@gmail.com",24,"punjab");
+let obj4 = CreateObject("narender","modi","modi@gmail.com",23,"maneshar");
+let obj5 = CreateObject("neha","pal","neha@gmail.com",22,"gurugram");
+// yha jitna be object banaya hai humna function ko call karka unka ander kuch kamiya hai unko nicha dekha 
+
+
+//optimise function ========>
+// humna jo function banaya tha jo ke object create karka return kar rha isma kuch dikkat hai 
+//jesa ke hum agar alag alag 10000 ya 1 million user be banayenga to har ak object jo banega usma jo function hai wo store honga jabki har ak object ma function same hai
+//islia unka hum phela he ak object bana denga or nich jo function hai jo object create karega usma humm uss object ka refrence dal dinga jis object ma phela he humna function banaye hua hai 
+
+
+let functions = {   //ye funcitons name ka object banaya hai jisma ke phela he humna wo function dal dia hai jo ke un objects ma use hona jo ke function create karega
+    about : function(){
+        return `${this.firstName} is ${this.age} years old.`
+    },
+    is18 : function(){
+        return this.age>=18; 
+    }
+} 
+
+
+function CreateOptimise(firstName,lastName,email,age,address){  //ya wo function hai jo object crate krta hai bas name change kar dia hai or nicha kuch change kara hai
+    const user = {};    
+    user.firstName = firstName;   
+    user.lastName = lastName;      
+    user.email = email;          
+    user.age = age;       
+    user.address = address;     
+    user.about = functions.about //yha sa humna functions ko hata dia hai, unka ak alag obj bana dia jika refrence(address) yha humna use kia hai jissa ke wo func har ak obj ma create nhi honga wo ak baar he bana dia lakin refrence yha dia hai to wo call ho jayenga in objects ka lia 
+    user.is18 = functions.is18      //asa he user.is18 ma humna functions name ka object hai jisma is18 name ka function humnna phela he bana dia tha uska refrence yha store kar dia hai
+    return user;    
+}
+
+let obb1 = CreateOptimise("palak","negi","palak@gmail.com",28,"kashmir")
+// console.log(obb1)    //==>obb1 ma ak object retun hua tha jo function na kia tha isma wo function nhi hai jo humna functions name ka object ma banaya tha lakin un functions ka refrence hai jinko nicha call kia hai
+// console.log(obb1.about())    //yha par about function call kia hai jo ke as a reference humna object ma store kia tha
+
+
+
+//=========>More Optimisation
+// isma be kuch dikkat hai, jesa ke agar huma or functions ke jrurat padi objects ka lia to phela huma function uss uper wala object ma banana padenga or fir nicha function ma aaker unka refrence dena padega
+//agar humna galti sa upper bana hua function ka refrence nhi dia or wo function humna object ka through call kia to huma error milega
+
+//insabsa bachna ka lia hum {[[prototype]] or __proto__} ko use kerta hai or object ko bhe [Object.create()] sa banata hai
+
+
+// {[[prototype]] or __proto__(dunder)} ====> ye dono same he hai iska matlab hota hai ak object ka ander dusra object ka refrence, lakin javaScript ma ak prototype be hota hai ussa aaga padenga
+// __proto__ ka matlab hai ke jab hum kisi ak object ka through kisi dusra object ke propety ko access karna ke koshish karta hai to undefined deta hai 
+//kyuki jis object sa hum property ko access kar rhae hai uss object ma wo property ha he nhi lakin agar hum dura obj ke proprty koo access karna he chayeta hai to uss object ma __proto__ ke value set karni padegi matlab {Object.create{__proto__}} uss object ka ander dusra obj ke refrence set karni padegi jiski property access karna chayeta hai
+// fir agar jis property ko hum acces karenga to phela wo object apna ander he dekhega agar wo property nhi mili to uss __proto__ object ka pass jayega or uss object ke  values ko dekhega or wha sa wo property la lega,==> isi ko __proto__ bolta hai
+//hum {__proto__ [[prototype]]} chaining sirf Object.create sa he bana sekta hai normal object sa hum __proto__ ke value set nhi kar sekta hai
+
+function createobj(firstName,lastName,email,age,address){  //ya wo function hai jo object crate krta hai bas name change kar dia hai or nicha kuch change kara hai
+    const user = Object.create(functions);   //ab humna yha proto ke value set kar de hai ya apna aap uss object ke pass sa he function ko access kar lega or huma is function ka ander object ma function add karna ke jrurat be nhi hai or na he refrence add karna ke jarurat hai 
+    user.firstName = firstName;   
+    user.lastName = lastName;      
+    user.email = email;          
+    user.age = age;       
+    user.address = address;     
+    return user;    
+}
+
+let user1 = createobj("payal","negi","palak@gmail.com",28,"kashmir")
+// console.log(user1)
+// console.log(user1.about())   //==>iska ander function be call ho rhae hai proto ke help sa
+
+
+//=======> optimise function using prototype
+//lakin jo humna abi tak itna optimise kia tha ye function issa thoda or optimise kar sekta hai prototype ke help sa 
+//===>prototype ka ak folder hai uska ander prototype ka file hai jisma sara kuch likha hai ye kya hai 
+
+//prototype ke help sa huma jo hum phela ak object bana rhae tha jisma function store karna tha us object ko nhi banana padega kyuki function huma prototype(object) deta hai jima hum keyvalue pair ya method add kar sekta hai
+function createobject(firstName,lastName,email,age,address){  
+    const user = Object.create(createobject.prototype);     //ab yha par humna is function ka prototype(object) ka refrence dia hai jisma humna function store kia hai  nicha
+    user.firstName = firstName;   
+    user.lastName = lastName;      
+    user.email = email;          
+    user.age = age;       
+    user.address = address;     
+    return user;   
+}
+createobject.prototype.about = function(){
+    return `${this.firstName} is ${this.age} years old.`
+}
+createobject.prototype.is18 = function(){
+    return (this.age>=18)
+}
+
+//===> yha hum dekh be sekta hai ke functions is function ka prototype ma add hua ya nhi
+// console.log(createobject.prototype) //==> prototype ma functions add ho gye hai
+
+let newuser = createobject("palak","negi","palak@gmail.com",28,"kashmir")
+// console.log(newuser.about())  //==>or yha jo object create hua hai wo function be call kar rha hai     
+
+
+// ===>
+// isi function ko hum new keyword sa or bhi improvise kar sekta hai jo new keyword wali file ma kia hai
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

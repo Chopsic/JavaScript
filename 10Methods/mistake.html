@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mistake</title>
+</head>
+<body style="background-color: gray; font-size: larger; color: black;">
+<script>
+// don't do this mistake =========>
+let myobj = {
+    user : "myobj value",
+    fun : function(){
+        console.log(this.user)
+    }
+}
+// myobj.fun()   //==> issa ya function call ho rha hai (myobj)object ka lia
+
+// agar hum ab issa ak variable ma store karta hai
+let s = myobj.fun;   //humna issa ak variable ma store kar lia hai
+// s()     //==> issa ab hum call kar rhae hai to ya undefined da rha hai 
+//kyuki ya (s) variable ha wo bhar bana hua hai matlab ke window object ka ander or jo function ka ander "this" keyword hai ussma ab uss window object ka refrence hai
+//matlab ke jo (s) call ho rha hai ussa window object call kar rha hai or window ka pass koi be user name ke key nhi hai  islia ya undefined dega 
+
+
+
+
+
+// ===================================?
+let st = myobj.fun;    //yha humna dubara sa myobj.fun ko ak variable ma store kar lia 
+
+// st() //====> agar ma ab iss asa he call karta hu to window object issa call karega or ussma koi be user name ke key nhi ha
+
+window.user = "Amit";   //ab humna window object ma user name ke key add kar de hai
+
+// st()    //==>ya ab amit print kar derga kyuki humna window object ma user name ke key add kardi hai 
+//ab function ka ander jo "this" hai uska ander window object ka refrence hai   
+
+
+
+// ========================>
+// lakin agar hum variable ma myobj ke key ke values lena chaeta hai to huma bind function sa binding karni hogi
+let b = myobj.fun.bind(myobj)   //===> or jo bind function hai wo ak function return kerta hai usa hum nicha call kar lenga
+// b()         //===> ab ya undefined nhi dega kyuki iska ander function hai jo bind function na return kia hai or usma jo "this" refer karega wo myobj ko karega kyuki humna bind ka ander myobj ko pass kia tha 
+
+
+
+
+// ==========================>
+//  arrow function and "this" ---->   
+let ar = {
+    nam : "Amit",
+    fun : ()=>{         //humna object ma ak arrow function use kia hai
+        // console.log(this)   //==> arrow function ka this nhi hota jo hum arrow function ma this use kerta hai wo humesha window object ko refer karta hai
+        console.log(this.nam)   //==> is arrow function ka ander humna this use kia hai
+    }
+}
+
+// console.log(ar.nam) //==>isma to hum nam ko access kar rhae hai ya to sidha access ho jayega
+// ar.fun()  //==>ya undefined dega kyuki humna arrow functon use kia hai or usma this hai jabki arrow function ka this nhi hota
+// ar.fun.call(ar)     //isma humna call function use karka this ko batana ke koshish ke lain wo ab be change nhi hua or undefined da rha hai[matlab ke arrow fun ma this change be nhi hota hai wo humesha window object ko he refer karega]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Keyword</title>
+</head>
+<body style="background-color: gray; color: black; font-size: larger;">
+<p>
+<b> call, apply and bind  ====></b>
+JavaScript mein call(), apply(), aur bind() kuch built-in functions hain jo ek function ko call karne aur this keyword ko set karne ke liye use kiye jaate hain.
+</p>
+<script>
+
+function hello(){
+    console.log("Hello World")
+}
+// hello()     //hum is function ko normally asa call karta hai 
+// hello.call()    //lakin hum kisi be function ko .call likhkar be call kar sekta hai 
+
+
+
+// ===================================================================>
+
+
+//((((((((((((([CALL APPLY AND BIND in javascript])))))))))))))
+// call function ====> call function sa jab kisi function ya method ko call kia jata hai to ya "this"[matlab object] ke value leta hai or aggruments ko seprately leta hai 
+//apply function ====> apply function sa jab kisi function ya method ko call kerta hai to ya this ke value leta hai or agar aggruments pass karna ho method ma to un aggruments ka ak array leta hai 
+//bind function =====> bind function sa jab kisi function ya method ko call kia jata hai to ya ak function return kerta hai or aggruments ko call function ke tra seprately leta hai 
+
+//jo functions ya method hum call,apply or bind sa call kerta hai wo function object ka ander be ho sekta hai or bhar be seprately bana ho sekta hai
+
+
+const user1 = {
+    firstName : "Amit",
+    age : 21,
+    about : function abc(){
+        console.log(this.firstName, this.age);
+    }
+}
+// user1.about();  //===> about function humna user1 ka lia call kia 
+// user1.about.call()   //==>isa hum asa be call kar sekta hai lakin ya un jugha par undefined dega jha par object ka he variables is function ka ander use kia hua hai 
+// user1.about.call(user1)   //us undefined sa bachna ka lia huma this ko ya batana padega ke konsa object is function ko call kar rha hai to hum sidha call fnction ka ander object pass kar dega
+ 
+
+
+// ===============================================================>
+
+// lakin ab humare pass 1 sa jayda objects hai jesa 100,1000 ja ussa be jyda or huma user1 ka function he unka lia chalana hai unka function nhi banana 
+//to hum ab wha par call function use karenga
+const user2 = {
+    firstName : "Sameer",
+    age : 19,
+}
+const user3 = {
+    firstName : "Palak",
+    age : 28,
+}
+const user4 = {
+    firstName : "Neha",
+    age : 23,
+}
+// user2.about()    //====>hum yha par asa nhi kar sekta kyuki user2 ka pass about function nhi hai
+//to ab yha par hum user1 object ka about function in users ka lia chalana hai
+//asa samaj sekta hai ke huma user1 object ka about function ko in objects ka lia borrow kar rhae hai
+
+// user1.about.call(user2)      //==>isma humna user1 sa about function lia or usska sath call function use kia or uss call function ko humna "this" bta dia ke iska lia ab "this" user2 hai
+// user1.about.call(user3)      //ab kisi be user ka lia hum ak he function ko call kar sekta hai
+// user1.about.call(user4)
+
+
+
+// ============================================================>
+// agruments in methods ----> 
+const std1 = {
+    firstName : "Amit",
+    age : 21,
+    about : function abc(a,b){      //ye ak fun decleration function hai jisma kuch aggrument pass karna hai isa call karta time
+        console.log(this.firstName, this.age,a,b);
+    }
+}
+const std2 = {
+    firstName : "Sam",
+    age : 19,
+}
+
+// ===> arguments passing thought call function
+// std1.about.call(std1,"male","graduate")     //====>jab hum kisi method ko call function sa call kerta hai to argument huma seprateky pass karna hota hai jesa isma kia hai
+// std1.about.call(std2,"male","graduate") 
+
+
+
+// =================================================>
+
+// apply function ==>
+// apply be call function jesa kaam kerta hai sirf ya difference hai ke call function aggruments ko seprately leta hai or apply function aggruments ko array ma leta hai[matlab ke ak array pass karna hota hai]
+
+
+//====> arguments passing thought apply function
+// std1.about.apply(std1,["male","graduate"])    //apply function sa method ko call karna par aggruments humna array ma pass kia hai ya ak array leta hai jisma aggruments ke value hoti hai  
+// std1.about.apply(std2,["male","graduate"]) 
+
+
+
+// ======================================================>
+//Bind function ====>
+//bind function be call or apply ke tarha hai bas ya difference ya ke bind ak function return kerta hai or ya be aggruments ko call ke taraha seprately leta hai
+//jo function return kerta hai ussa hum kisi variable ma strore kar sekta hai or ussa hum baad ma use kar sekta hai
+let store = std1.about.bind(std2,"male","pursuing")
+// store()      //bind na jo function return kis tha wo humna store variable ma store kar lia tha pr ussa hum yha call kar sekta hai
+
+
+
+</script>
+</body>
+</html>

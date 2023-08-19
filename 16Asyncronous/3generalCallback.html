@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callbacks in syncronous Programming</title>
+</head>
+<body style=" background-color: grey;">
+    
+</body>
+<script>
+// callback ==> jo function kisi function ko as a argument leta hai ussa hum higher order function kehta hai or jo function as a argumernt jata hai uss callback function kehta hai;
+// ye jo be callback hum pad rhae hai wo simple calback hai jo ke syncronous javaspcript ma use kar rhae hai agga hum asyncronous ma callback padhenga
+
+// yha run nam ka function banaya hai jo ke 2 number lega or 2 callback function lega 
+function run(num1,num2,onSucess,onFail){
+    if(typeof num1 === "number" && typeof num2 === "number"){   //yha datatype check ho rhae hai ke jo number hai wo number he hai na kbi string to nhi
+        onSucess(num1,num2);    //condition type par ye function run ho jayega
+    }
+    else{
+        onFail();   // or condition false hone par ye function run ho jayega
+    }
+}
+
+// yha run function call kia usma humna 2 number pass kar dia or 2 arrow function banakar pass kar dia hum inko alag bankr be pass kar sekta hai
+// jo phela wala arrow function hai wo onSucess par run hoga ot jo 2nd wala arrow function hai wo onFail par run hoga
+run(1,5,(a,b)=>{
+    console.log(a+b);
+},()=>{
+    console.log("Enter Number Only")
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

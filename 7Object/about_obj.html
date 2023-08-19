@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More about objects</title>
+</head>
+
+<body style="background-color: gray; color: greenyellow;">
+    <pre>
+object clone using Object.assign
+</pre>
+<script>
+//object clone using [object.assign and spread operator]
+// -------------------------------------------------------->
+//Object.assign()  ============> ya purana tarika hai
+//object.assign sa hum ak kisi be object ke copy(cloning) kar sekta hai
+//ya fir issa hum 1 sa jayda objects ko ak new object ma spread kar sekta hai 
+//object.assign ma starting ma empty object pass hota hai jiska ander baki objects ke key vale pair store honga
+//or uska baad wo objects ayenga jinko us empty object ma copy karna hai ya spread karna hai
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+const obj3 = { e: 5 };
+let newobj = Object.assign({}, obj1, obj2, obj3)
+// console.log(newobj) 
+// -------------------------------------------------------->
+// spread operator ==================> ya new tarika hai
+//spread operator ma ya yaad rekhna padta hai ke aapna object ke he curley bracket use ke hai werna ya array bana dega
+//isma aapko {}curley brackey lagakar ...triple dot ka baad existing object ko pass karna hota hai
+let spread = { ...obj1, ...obj2, ...obj3 }
+// console.log(spread) 
+// spread operator sa hum sidhi key value paid be add kar sekta hai new object ma
+let extrapair = { ...obj1, ...obj2, ...obj3, new: "pair" }
+// console.log(extrapair)
+// -------------------------------------------------------->
+// optional chaining =====>
+// optional chaining ka use hum nested objects ma use kerta hai
+let obj = {
+    prop1: {
+        prop2: "Hello World!", abc: () => {
+            return ("hello")
+        }
+    }
+};
+// Ab agar hum obj mein kisi property ke liye access karna chahte hain to:
+let result1 = obj.prop1.prop2; // result = "Hello World!"
+// Yadi hum non-existent property ke liye access karenge, to error milega:
+let result2 = obj.prop1.prop3; // Uncaught TypeError: Cannot read property 'prop3' of undefined
+// Optional chaining ke istemal se error generate na hone ke bajay undefined hi return hoga:
+let result3 = obj.prop1?.prop3; // result = undefined
+// Is tarah se hum "optional chaining" operator ka upyog karke code ki safety ko improve kar sakte hain aur errors ko handle kar sakte hain.
+
+// console.log(obj?.prop1?.abc())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+
+</html>

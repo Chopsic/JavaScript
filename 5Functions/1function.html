@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Types of Funtions in JS</h1>
+    <ul>
+        <li>Function Decleration</li>
+        <li>Function Expression</li>
+        <li>Arrow Function</li>
+    </ul>
+</body>
+<script>
+// plus point= = = > JS ma functions function be hai or object bhi
+
+    // simple functions ------------------------>
+    function sum(){    //function is for adding two numbers
+        let a=parseFloat(prompt("Enter First Number"));
+        let b=parseFloat(prompt("Enter Second Number"));
+        document.write(a+b);
+    }
+    // sum() 
+
+    function product(){   //function is for adding two numbers
+        let a=parseFloat(prompt("Enter First Number"));
+        let b=parseFloat(prompt("Enter First Number"));
+        let c=parseFloat(prompt("Enter First Number"));
+        document.write(a*b*c);
+    }  
+    //product() 
+
+    //argument Function [Function Decleration] --------------------------->
+    function add(a,b){  
+        document.write(a+b);
+    }
+    // let a = parseInt(prompt("Enter 1st No"));
+    // let b = parseInt(prompt("Enter 2nd  No."));
+    // add(a,b)
+
+    function product(a,b){
+        document.write(a*b);
+    }
+    // let a = parseInt(prompt("Enter 1st No"));
+    // let b = parseInt(prompt("Enter 1st No"));
+    // product(a,b)
+
+    function product(a,b){  //function for product using return   
+        return a*b;  //return is use for terminate the function
+    }
+    // let a = parseInt(prompt("Enter Ist No."));
+    // let b = parseInt(prompt("Enter IInd No."));
+    // document.write(product(a,b));
+
+    function check(num){
+        if(num%2==0){
+            return "even";
+        }
+        return "odd";
+    }
+    // let num=parseInt(prompt("Enter No."));
+    // document.write(check(num));
+
+    function display(){
+        for(let i=0;i<10;i++){
+            return i;
+        }
+    }
+    // document.write(display());  //result is zero because jab condition check hona ka baad loop chlega to i ke value 1st time ma 0 hai 
+    // or fir function terminate go jayega kyuki return likha hua hai 
+
+    function prime(num){
+        let i=2;
+        while(num/2>i){
+            if(num%i==0){
+                return "not prime";
+            }
+            return "prime";
+            i++;
+        }
+    }
+    let num=parseInt(prompt("Enter"));
+    document.write(prime(num));
+
+
+    //Anonymous Function [Function Expression] ------------------------------>
+    let an = function (){
+        document.write("Anonumous");
+    }
+    // (function (a,b){
+        // document.write(a+b);
+        // })()
+    // let a = parseInt(prompt("Enter Ist No."));
+    // let b = parseInt(prompt("Enter IInd No."));
+
+
+
+
+    //Arrow Function -------------------------------->
+    let aro = (()=>{
+        document.write("Aarrow Function")
+    })
+
+
+
+// recursion in function ==> creating a loop inside function without using any loop by calling a function inside a function
+
+//Infinite Loop if you will not use any condition ------------------->
+function myfun1(){
+        document.write("Loop"+ "<br>");
+        myfun1();
+    }
+    // myfun1();
+
+//Infinte repeate hona sa bachana ke lia hum if else or conditions use karta hai ---------------------------->
+    function myfun2(a){
+        if(a==0){
+            return;
+        }
+        document.write("value of a "+ a,"<br>");
+        myfun2(a-1);
+        // document.write("remain value of a "+ a,"<br>")    //ye line bhi run hogi kyuki after calling a function, last me jo bhi call stack ma data hota hai wo print hota h Ye lifo based par khali hota hai[last in first out]  (or Queue(matlab ak line) fifo par[first in first out])
+    }
+    // let a = parseInt(prompt("Enter No."));
+    // myfun2(a);
+
+
+
+//[call back function] a function who takes function as an arrgumnets and call that function -------------------------------->
+    function add(a,b){
+        document.write(a+b,"<br>");
+    }
+    function sub(a,b){
+        document.write(a-b,"<br>");
+    }
+    function use(a,b,fun){      //fun ak function arrgument hai
+        fun(a,b);              
+    }
+    // use(5,6,add)
+    // use(5,3,sub)
+
+
+
+
+
+    //default parameters in function ===========================>
+    //here a=0 or b=0 are default parameters jab function call kia jayega or a and b ke value nhi de jayengi jab ye default value chal jayengi
+    function sum(a=0,b=0){        
+        console.log(a+b);
+    }
+    // sum(1,2);    //==> 3  iska answer 3 hai isma do parameter pass kia hai
+    // sum()        //==>0  iska answer 0 hai isma koi bhe parameter pass nhi kia isna default parameter use kar lia agar default paramerter nhi hota to ye NaN deta
+    // sum(2)       //==>2  iska answer 2 hai isna a ke ander 2 dal dia or b me 0 la lia default parameter sa
+
+
+    //rest parameter ==================================>
+    // rest parameter ye he hota ha ke jab hum function ko call karta time jayda parameter pass karta hai to bacha hua parameters ko be khai store kar la
+    // to unhae hum reset parameter ka through jesa ...c lagakar c ma store sekta hai [ab c ak array ban gaya hai] 
+    function add(a,b,...c){
+            console.log(a);
+            console.log(b);
+            console.log(c);
+    }
+    // add(1,2,3,4,5,6);   //yha a=1,b=2 or bacha hue parameters c me arary bankar store o jayenga.
+
+    // example of reset parameter -------->
+    function addition(...numbers){  //jab is function ko call karenga to jo parameters pass honga wo numbers ma array bankar store ho jayenga.
+        let sum = 0;                // yha ak sum name ka variable banaya hai jisma sum add hoga abi value 0 hai 
+        for(let num of numbers){    // yha humna [for of loop] chalaya hai isma elements aata h 
+            sum = sum + num;        // sum ke ander no. ka sum store hota jayega jesa jesa array ke elements aata raheyenga
+        }
+        console.log(sum);           //loop ke bhar sum print kar dia kyuki loop ke ander isko dalta to ye bar bar print hota humko sirf ak bar print karna tha
+    }
+    // addition(1,2,3,4,5,6,7,8,9)     // yha function call kr rheka hai 
+
+
+    //parameter destructuring ======================================>
+    //ye sirf object ke saath he karta hai
+    const object = {            //humna yha ak object banaya hai
+        name : "Amit",
+        gender : "male",
+        age : 20
+    } 
+
+    function myfun(obj){        //ye function ak object ko as a parameter lega or unka name print karega
+        console.log(obj.name);
+        console.log(obj.gender);
+        console.log(obj.age);
+        console.log(obj.hobies);    //object me hobbies name ke key nhi hai islia ye undefined dega
+    }
+    // myfun(object);     //yha function call kia or uper wala object as a argument pass kar dia     
+
+//isko hum dusra tarika se be kar sekta hai ------------>
+    function mynewfun({name,age}){      //yha humna name or gar ka variable banaya hai {curley bracket} ke ander
+        console.log(name);
+        console.log(age);
+        // console.log(gender);   //ab gender print nhi hoga kyuki uper humna sirf nume or age ka he variable banaya hai 
+    }
+    // mynewfun(object);  //yha function call kar dia
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

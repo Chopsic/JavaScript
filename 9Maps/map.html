@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Data Structure</title>
+</head>
+<body style="font-size: larger;">
+<pre>
+Map ===> The Map object holds key-value pairs and remembers the original insertion order of the keys.
+map ma jo keys hai wo kisi be data type ma ho sekti hai string, array, object, function ya koi or be primitive datatype.
+</pre>
+<script>
+//map ====> map object ke tarha hai ye be key value pair hold kerta hai 
+//lakin hum map ke ander key ko kisi be primitive ya refrence type ke rekh sekta hai jaisa ke function,number, object ko be
+//map ke ander hum set sa value set(add) kar sekta hai or
+//map ke ander hum get sa value get(access ya la) sekta hai
+let map = new Map();      //===>yha ak variable ma [new Map()]sa ak map banaya hai jo ke empty hai  
+map.set({a:4},"object")   //map ke ander key value pair add kar rhae hai jima key ak object hai
+map.set(function(){console.log("function")},"function")  //isma map ke key ak function hai
+map.set(5,"number")       //isma map ke key ak number hai
+map.set([0,1,2],"array")  //isma map ke key ak array hai
+map.set("Quotes","string")   //isma map ke key ak string hai
+// console.log(map) 
+
+//We can use for of loop on maps =======>
+for(let elements of map){
+    // console.log(elements, Array.isArray(elements))   //===> ya map ka elements ko print karega array ma
+    // console.log(elements[0])        //hum asa be map ke keys ko access kar sekta hai
+}
+
+//how to get keys of map======>
+// console.log(map.keys()) //===>mapnampe.keys() sa hum map ke keys ka get kar sekta hai
+
+//now we can apply for of loop on map keys 
+for(let key of map.keys()){
+    // console.log(key, typeof key)     //===> ja sirf map ke keys ko print karega
+}
+
+
+
+//map ka ander hum key value pair map banata samay be add kar keyta hai
+let newmap = new Map([['username','amit'],['age','25']]);
+// console.log(newmap)
+
+
+
+//practical usecase of map
+//hum ak user ke personal information save karni hai lakin hum wo object ma nhi karni to hum map ka ander save kar sekta hai
+let person1 = {id : 01, username : "Amit" }
+let person2 = {id : 02, username : "Sameer" }
+
+let extrainfo = new Map();
+extrainfo.set(person1, {age: 21, gender : "male"});
+extrainfo.set(person2, {age: 19, gender : "male"})
+// console.log(extrainfo.get(person1))      //ye huma person1 ke value dega jo ke ak object hai
+// console.log(extrainfo.get(person1).age)  //ya huma persone1 ke value jo ke ak object hai uski age ke value dega
+// console.log(extrainfo.get(person2).gender)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

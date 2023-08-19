@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body style="background-color: lightgray; font-size: larger;">
+<p>function ===> objects [function object ke thra bhi treate krta hai]</p>
+<p>Prototype</p>
+<script>
+function hello(){
+    console.log("hello world")
+}
+// console.log(hello.name) //==>.name property tells the function name
+
+// humna yha par hello function ka ander key value pairs add kar dia object ke thra
+hello.firstName = "Amit"
+hello.lastName = "Saini"
+hello.age = "21";
+
+//===> or object ma jesa properties ko acces krta hai wesa he yha hum function ma sa properties ko acces kar sekta hai jo add ke the
+// console.log(hello.firstName)
+// console.log(hello.age)
+
+//===> ab yha par hum dekhenga ke function object ke tra treate kyu kar rha hai iska ander keyvalue pair kyu add ho rhae hai
+
+// ====================================>
+//Prototype ===> only function decleration and expression have prototype property
+//basically jab hum koi be function create kerta hai tab hum ak object milta hai usi ko hum prototype bolta hai
+//function create hona par object ka ander ak constructor hota hai uski value ya he function hota hai jo humna banaya hai
+// console.log(hello.prototype) //===> issa hum dekh sekta hai ak object ka ande constructor hai uski value ak function hai jo humna create kia tha  
+
+
+//jo property humna hello.firstName sa add ke the wo to constructor ka ander add hui the
+//lakin ab hum prototype ka ander proprties ka ander add karenga
+hello.prototype.fullName = "Amit Saini";    //function name ka baad prototype likhna jruri hai jbi prototype ma add honi wena constructor ma add ho jayengi
+hello.prototype.gender = "Male";
+hello.prototype.age = 21;
+// console.log(hello.prototype)  //==> isma dekh sekta hai ke prototype ka ander keyvalue pair add ho gye hai or last ma construction be hai
+// console.log(hello.gender)    //===>isa bina prototype likha acces nhi kia jayega
+// console.log(hello.prototype.gender)  //===>function name . prototyppe . proprty name
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New</title>
+</head>
+<body>
+<script>
+//new Keyword ==========>  ye 3 kaam karta hai
+// 1st ==> Phela ak empty object create karta hai jo this ka equal hota hai [this = {}]
+// 2nd ==> Dushra return karta hai object(this) ko matlab ke this ko return karta hai
+// 3rd ==> ye apana aap __proto__ ke value uss prototype ka equal set kar dega yha humara methods save hai
+
+//==> is function ma humna this keyword use kia hai abhi ya function call nhi hua hai to this window object ko refer karega
+//lakin jab hum is function ko new keyword laga kar call karenga to new keyword ak object create karega or fir ye this keyword uss object ko refer karega kyuki this ke value huma function execution time par pata chalti hai
+function createUser(nam,age){ //==>yha ak function banaya hai jo ak object create karega usma wo value save hongi jo function ma as a argument ayengi   
+    this.name = nam;    //iss function ma humna koi be empty object nhi banaya hai wo apna aap ban jayega jab hum is function ko new keyword lagakar call karenga
+    this.age = age;     //isma this use karna jruri hai ye object ko refer karega jab ya function call hoga
+    // return this     //ya function khud this ko return karta hai to huma ya likhna ke jrurat nhi hai
+ }
+createUser.prototype.about = function(){    //==> ye function humna upper wala function ka prototype ma add kia hai
+    return `${this.name} is ${this.age} years old`;
+}
+
+let user1 = new createUser("amit",21)   //==> uper jo function humna banaya tha wo new keyword ka through call kia hai ya 3 kaam kar rha hai jo upper likha hai
+// console.log(user1)      //function ko call karna par huma ya user1 object mila hila hai iska ander dono chija hai jo humna function ma as a agrument pass ke thi
+// console.log(user1.about())  //about function be call ho rha hai jo humna function ka prototype object ma add kia tha
+
+
+
+//improvise function by new keyword ==========>
+// jo function humna object banana ka lia banaya tha ussa hum new keyword ke help sa improvise kar rhae hai 
+// ===>constructor function
+function Createobject(firstName,lastName,email,age,address){     
+    this.firstName = firstName;   
+    this.lastName = lastName;      
+    this.email = email;          
+    this.age = age;       
+    this.address = address;    
+    // return this      //ya function khud this ko return karta hai to huma ya likhna ke jrurat nhi hai
+
+}
+Createobject.prototype.about = function(){
+    return `${this.firstName} is ${this.age} years old.`
+}
+Createobject.prototype.is18 = function(){
+    return (this.age>=18)
+}
+//=======> humna usi function ko improvise kia hai jo huma obj banakar da rha tha 
+//isma na to humna koi empty object create kia or na he ussa return kia or na he humna proto ke value function ka prototype ka equal rakhi
+//ya sab kaam new keyword na kar dia humna sirf object ka ander keyvalue pair add kia tha this sa 
+
+let obj1 = new Createobject("amit","saini","amit@gmail.com",21,"faridabad");  //yha humna function ko call kia or obj1 ma object ko store kia jo is function na retur kia hai
+// console.log(obj1);   //==> isma object print ho rha hai
+// console.log(obj1.about())    //==> or method be call ho rhae hai jo function ka prototype ma store hai
+// console.log(obj1.is18())
+
+
+// yha hum jo obj1 bana hai uski keys ko print karenga==>
+for(let key in obj1){
+    // console.log(key)    //==> ab hum iski key print kar rhae hai to ya prototype ma jo keyvalue pair(functionor methods) add kia tha unko be dikha rha hai
+    if(obj1.hasOwnProperty(key)){   //hasOwnProperty ya check karta hai ke keys user1 ke he hai agar hai to true dega or nicha console ma print kar dega
+        // console.log(key);        //==>only obj1 keyvalue pairs no prototype keys
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
